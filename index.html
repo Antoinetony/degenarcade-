@@ -1,458 +1,498 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>DegenArcade – Play Slope Free</title>
-  <meta name="description" content="Play Slope and the most addictive free browser games on DegenArcade. No download. No BS. Just play." />
-
-  <!-- Open Graph for link previews on TikTok/Snap -->
-  <meta property="og:title" content="DegenArcade – Play Slope Free" />
-  <meta property="og:description" content="The most addictive free browser games. No download. Just play." />
-  <meta property="og:type" content="website" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>DegenArcade – Play Free Games</title>
+  <meta name="description" content="The most addictive free browser games. Slope, Geometry Dash and more. No download. No login. Just play."/>
+  <meta property="og:title" content="DegenArcade – Play Free Games"/>
+  <meta property="og:description" content="Scientists say these are the most addictive games on the internet. Play free now."/>
+  <meta property="og:url" content="https://degenarcade.online"/>
+  <meta name="theme-color" content="#08080f"/>
 
   <style>
     /* ── TOKENS ── */
     :root {
-      --black:   #080810;
-      --surface: #0f0f1a;
-      --panel:   #16162a;
-      --border:  #2a2a45;
-      --accent:  #ff3c3c;
-      --accent2: #ff8c00;
-      --text:    #f0f0ff;
-      --muted:   #7070a0;
-      --font-display: 'Arial Black', 'Impact', sans-serif;
-      --font-body:    'Segoe UI', system-ui, sans-serif;
+      --bg:       #08080f;
+      --surface:  #0e0e1c;
+      --card:     #13132a;
+      --border:   #1e1e3a;
+      --accent:   #e63946;
+      --gold:     #f4a261;
+      --text:     #eeeeff;
+      --muted:    #6666aa;
+      --radius:   10px;
+      --font-d:   'Arial Black', Impact, sans-serif;
+      --font-b:   'Segoe UI', system-ui, sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html, body {
-      background: var(--black);
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
       color: var(--text);
-      font-family: var(--font-body);
+      font-family: var(--font-b);
       min-height: 100vh;
-      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* ── NAVBAR ── */
+    /* ── NAV ── */
     nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(8,8,15,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      height: 50px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 20px;
-      height: 52px;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      padding: 0 16px;
     }
 
     .logo {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      letter-spacing: -0.5px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      font-family: var(--font-d);
+      font-size: clamp(1rem, 4vw, 1.3rem);
+      background: linear-gradient(90deg, var(--accent) 0%, var(--gold) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       text-decoration: none;
+      letter-spacing: -0.5px;
     }
 
-    .nav-tag {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
+    .nav-pill {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 0.65rem;
       color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
-    /* ── AD SLOT ── */
-    .ad-slot {
+    /* ── AD SLOTS ── */
+    .ad {
       width: 100%;
-      background: var(--panel);
+      min-height: 60px;
+      background: var(--surface);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 60px;
       overflow: hidden;
     }
 
-    .ad-slot-label {
-      font-size: 0.65rem;
+    .ad-label {
+      font-size: 0.6rem;
       color: var(--muted);
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      padding: 8px;
+      opacity: 0.5;
     }
 
-    /* ── HERO GAME SECTION ── */
-    .game-hero {
-      padding: 16px 16px 8px;
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 28px 16px 16px;
     }
 
-    .game-title-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(230,57,70,0.15);
+      border: 1px solid rgba(230,57,70,0.3);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       margin-bottom: 10px;
     }
 
-    .game-badge {
-      background: var(--accent);
-      color: white;
-      font-size: 0.6rem;
-      font-weight: 900;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 3px 8px;
-      border-radius: 2px;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.6; }
-    }
-
-    .game-title {
-      font-family: var(--font-display);
-      font-size: 1.6rem;
+    .hero h1 {
+      font-family: var(--font-d);
+      font-size: clamp(1.4rem, 6vw, 2.2rem);
+      line-height: 1.1;
       letter-spacing: -1px;
-      line-height: 1;
+      margin-bottom: 6px;
     }
 
-    .game-title span {
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    .game-sub {
-      font-size: 0.8rem;
+    .hero-sub {
+      font-size: 0.82rem;
       color: var(--muted);
-      margin-bottom: 12px;
+      max-width: 300px;
+      margin: 0 auto;
+      line-height: 1.5;
     }
 
-    /* ── IFRAME WRAPPER ── */
-    .iframe-wrapper {
+    /* ── GAME GRID ── */
+    .games {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* On desktop show side by side */
+    @media (min-width: 700px) {
+      .games {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+      .game-block { flex: 1; }
+    }
+
+    /* ── GAME BLOCK ── */
+    .game-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .game-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .game-name {
+      font-family: var(--font-d);
+      font-size: 1rem;
+      letter-spacing: -0.3px;
+    }
+
+    .game-tag {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .tag-hot {
+      background: rgba(230,57,70,0.2);
+      color: var(--accent);
+      border: 1px solid rgba(230,57,70,0.3);
+    }
+
+    .tag-viral {
+      background: rgba(244,162,97,0.2);
+      color: var(--gold);
+      border: 1px solid rgba(244,162,97,0.3);
+    }
+
+    /* ── IFRAME CONTAINER ── */
+    .iframe-box {
       position: relative;
       width: 100%;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid var(--border);
+      /* 4:3 feels better for mobile game play */
+      padding-bottom: 75%;
       background: #000;
-      /* 16:9 on desktop, taller on mobile */
-      aspect-ratio: 16/9;
     }
 
-    @media (max-width: 600px) {
-      .iframe-wrapper {
-        aspect-ratio: 3/4;
-      }
+    @media (min-width: 700px) {
+      .iframe-box { padding-bottom: 65%; }
     }
 
-    .iframe-wrapper iframe {
+    .iframe-box iframe {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       border: none;
       display: block;
     }
 
-    /* Fullscreen button */
-    .fullscreen-btn {
+    /* Loading overlay */
+    .iframe-box .loader {
       position: absolute;
-      bottom: 10px;
-      right: 10px;
-      background: rgba(0,0,0,0.75);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 6px 10px;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      cursor: pointer;
-      font-family: var(--font-body);
-      transition: background 0.2s;
-      z-index: 10;
-    }
-
-    .fullscreen-btn:hover { background: var(--accent); border-color: var(--accent); }
-
-    /* ── STATS ROW ── */
-    .stats-row {
-      display: flex;
-      gap: 16px;
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .stat {
+      inset: 0;
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--card);
+      z-index: 2;
+      transition: opacity 0.4s;
     }
 
-    .stat-num {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .loader-ring {
+      width: 32px;
+      height: 32px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
     }
 
-    .stat-label {
-      font-size: 0.65rem;
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .loader-text {
+      font-size: 0.72rem;
       color: var(--muted);
-      text-transform: uppercase;
       letter-spacing: 1px;
     }
 
-    /* ── HOW TO PLAY ── */
-    .how-to {
-      padding: 16px;
-      border-bottom: 1px solid var(--border);
-    }
+    .loader.hidden { opacity: 0; pointer-events: none; }
 
-    .section-label {
-      font-size: 0.65rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
-
-    .controls {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .control-chip {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 6px 12px;
-      font-size: 0.8rem;
+    /* ── GAME FOOTER ── */
+    .game-footer {
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: space-between;
+      padding: 8px 14px;
+      border-top: 1px solid var(--border);
     }
 
-    .control-key {
-      background: var(--border);
-      border-radius: 3px;
-      padding: 2px 6px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--accent2);
+    .game-desc {
+      font-size: 0.72rem;
+      color: var(--muted);
     }
 
-    /* ── CHALLENGE BANNER ── */
-    .challenge {
-      margin: 16px;
-      padding: 14px 16px;
-      background: linear-gradient(135deg, rgba(255,60,60,0.1), rgba(255,140,0,0.1));
-      border: 1px solid rgba(255,60,60,0.3);
-      border-radius: 8px;
+    .fs-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.72rem;
+      cursor: pointer;
+      font-family: var(--font-b);
+      transition: border-color 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+
+    .fs-btn:hover, .fs-btn:active {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── CHALLENGE STRIP ── */
+    .challenge-strip {
+      margin: 4px 16px 16px;
+      padding: 12px 14px;
+      background: linear-gradient(135deg, rgba(230,57,70,0.08), rgba(244,162,97,0.08));
+      border: 1px solid rgba(230,57,70,0.2);
+      border-radius: var(--radius);
       display: flex;
       align-items: center;
       gap: 12px;
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .challenge-icon { font-size: 1.5rem; }
+    .challenge-strip .icon { font-size: 1.3rem; flex-shrink: 0; }
 
-    .challenge-text {
-      font-size: 0.85rem;
-      line-height: 1.4;
+    .challenge-strip p {
+      font-size: 0.8rem;
+      line-height: 1.45;
+      color: var(--muted);
     }
 
-    .challenge-text strong {
-      color: var(--accent);
-      display: block;
-      font-size: 0.95rem;
-      margin-bottom: 2px;
-    }
+    .challenge-strip strong { color: var(--text); }
 
     /* ── FOOTER ── */
     footer {
-      padding: 20px 16px;
       border-top: 1px solid var(--border);
+      padding: 20px 16px;
       text-align: center;
     }
 
     .footer-logo {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      font-family: var(--font-d);
+      font-size: 0.95rem;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       margin-bottom: 6px;
     }
 
-    .footer-text {
-      font-size: 0.72rem;
+    footer p {
+      font-size: 0.68rem;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
-    .footer-text a {
-      color: var(--muted);
-      text-decoration: none;
-    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
 
-    /* ── LAYOUT CAP ── */
-    .wrap {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    /* ── SCANLINE TEXTURE (signature element) ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(0,0,0,0.05) 2px,
-        rgba(0,0,0,0.05) 4px
-      );
-      pointer-events: none;
-      z-index: 999;
-    }
+    /* ── POPUNDER / SOCIAL BAR — Adsterra injects these, no extra CSS needed ── */
   </style>
 </head>
 <body>
 
-<div class="wrap">
+<!-- ═══════════════════════════════════════
+     ADSTERRA — SOCIAL BAR
+     Paste your Social Bar script tag here
+     It auto-injects a sticky bar, no div needed
+════════════════════════════════════════ -->
+<!-- ADSTERRA_SOCIAL_BAR_SCRIPT -->
 
-  <!-- NAVBAR -->
-  <nav>
-    <a class="logo" href="/">DEGENARCADE</a>
-    <span class="nav-tag">Free Games</span>
-  </nav>
+<!-- ═══════════════════════════════════════
+     ADSTERRA — POPUNDER
+     Paste your Popunder script tag here
+════════════════════════════════════════ -->
+<!-- ADSTERRA_POPUNDER_SCRIPT -->
 
-  <!-- AD SLOT TOP — paste your Adsterra script here -->
-  <div class="ad-slot" id="ad-top">
-    <!-- ADSTERRA AD UNIT TOP -->
-    <span class="ad-slot-label">Advertisement</span>
-  </div>
 
-  <!-- GAME HERO -->
-  <div class="game-hero">
-    <div class="game-title-row">
-      <span class="game-badge">🔴 Live</span>
-      <h1 class="game-title"><span>SLOPE</span></h1>
+<!-- NAV -->
+<nav>
+  <a class="logo" href="/">DEGENARCADE</a>
+  <span class="nav-pill">Free · No Login</span>
+</nav>
+
+
+<!-- ═══ AD TOP — Native Banner ═══ -->
+<div class="ad" id="ad-top">
+  <!-- ADSTERRA_NATIVE_BANNER_TOP -->
+  <span class="ad-label">Advertisement</span>
+</div>
+
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-eyebrow">🔴 Live Now</span>
+  <h1>Two games.<br/><em>Zero excuses.</em></h1>
+  <p class="hero-sub">Scientists say these are the most addictive browser games on the internet. Don't say we didn't warn you.</p>
+</div>
+
+
+<!-- GAMES -->
+<div class="games">
+
+  <!-- ── SLOPE ── -->
+  <div class="game-block" id="block-slope">
+    <div class="game-header">
+      <span class="game-name">Slope</span>
+      <span class="game-tag tag-hot">🔥 Most Played</span>
     </div>
-    <p class="game-sub">Roll. Dodge. Die. Repeat. — Free, no download, no login.</p>
 
-    <!-- IFRAME -->
-    <div class="iframe-wrapper" id="gameWrapper">
+    <div class="iframe-box" id="wrap-slope">
+      <div class="loader" id="loader-slope">
+        <div class="loader-ring"></div>
+        <span class="loader-text">Loading game...</span>
+      </div>
       <iframe
-        src="https://www.onlinegames.io/games/2021/unity/slope-game/index.html"
+        id="iframe-slope"
+        src="https://slope-unblocked.github.io/"
         title="Slope Game"
         allow="fullscreen"
         allowfullscreen
         loading="eager"
         scrolling="no"
+        onload="hideLoader('loader-slope')"
       ></iframe>
-      <button class="fullscreen-btn" onclick="goFullscreen()">⛶ Fullscreen</button>
+    </div>
+
+    <div class="game-footer">
+      <span class="game-desc">Arrow keys or A/D · Survive as long as you can</span>
+      <button class="fs-btn" onclick="goFS('wrap-slope')">⛶ Full</button>
     </div>
   </div>
 
-  <!-- STATS -->
-  <div class="stats-row">
-    <div class="stat">
-      <span class="stat-num" id="playCount">—</span>
-      <span class="stat-label">Plays Today</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">∞</span>
-      <span class="stat-label">Levels</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">Free</span>
-      <span class="stat-label">Always</span>
-    </div>
-  </div>
 
-  <!-- AD SLOT MIDDLE — paste your Adsterra script here -->
-  <div class="ad-slot" id="ad-mid">
-    <!-- ADSTERRA AD UNIT MID -->
-    <span class="ad-slot-label">Advertisement</span>
-  </div>
+  <!-- ── GEOMETRY DASH ── -->
+  <div class="game-block" id="block-gdash">
+    <div class="game-header">
+      <span class="game-name">Geometry Dash</span>
+      <span class="game-tag tag-viral">📈 Viral</span>
+    </div>
 
-  <!-- HOW TO PLAY -->
-  <div class="how-to">
-    <p class="section-label">Controls</p>
-    <div class="controls">
-      <div class="control-chip">
-        <span class="control-key">←</span>
-        <span class="control-key">→</span>
-        Move left / right
+    <div class="iframe-box" id="wrap-gdash">
+      <div class="loader" id="loader-gdash">
+        <div class="loader-ring"></div>
+        <span class="loader-text">Loading game...</span>
       </div>
-      <div class="control-chip">
-        <span class="control-key">A</span>
-        <span class="control-key">D</span>
-        Alt controls
-      </div>
-      <div class="control-chip">
-        📱 Tilt or tap edges on mobile
-      </div>
+      <iframe
+        id="iframe-gdash"
+        src="https://geometry-dash-game.github.io/"
+        title="Geometry Dash"
+        allow="fullscreen"
+        allowfullscreen
+        loading="lazy"
+        scrolling="no"
+        onload="hideLoader('loader-gdash')"
+      ></iframe>
+    </div>
+
+    <div class="game-footer">
+      <span class="game-desc">Tap or Space · Time your jumps perfectly</span>
+      <button class="fs-btn" onclick="goFS('wrap-gdash')">⛶ Full</button>
     </div>
   </div>
-
-  <!-- CHALLENGE BANNER -->
-  <div class="challenge">
-    <span class="challenge-icon">🎯</span>
-    <div class="challenge-text">
-      <strong>Can you last 60 seconds?</strong>
-      Most people don't make it past 20. Prove them wrong.
-    </div>
-  </div>
-
-  <!-- AD SLOT BOTTOM — paste your Adsterra script here -->
-  <div class="ad-slot" id="ad-bottom">
-    <!-- ADSTERRA AD UNIT BOTTOM -->
-    <span class="ad-slot-label">Advertisement</span>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo">DEGENARCADE</div>
-    <p class="footer-text">
-      Free browser games. No downloads. No BS.<br/>
-      <a href="#">Privacy</a> · <a href="#">Contact</a>
-    </p>
-  </footer>
 
 </div>
 
+
+<!-- CHALLENGE STRIP -->
+<div class="challenge-strip">
+  <span class="icon">🎯</span>
+  <p><strong>Can you last 60 seconds on Slope?</strong> Most people rage quit before 30. Geometry Dash has a 1% completion rate. Both are free. Both will ruin your sleep.</p>
+</div>
+
+
+<!-- ═══ AD BOTTOM — Native Banner ═══ -->
+<div class="ad" id="ad-bottom">
+  <!-- ADSTERRA_NATIVE_BANNER_BOTTOM -->
+  <span class="ad-label">Advertisement</span>
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">DEGENARCADE</div>
+  <p>
+    Free browser games. No downloads. No BS.<br/>
+    <a href="#">Privacy Policy</a> · <a href="mailto:hello@degenarcade.online">Contact</a>
+  </p>
+</footer>
+
+
 <script>
-  // ── Fullscreen ──
-  function goFullscreen() {
-    const wrapper = document.getElementById('gameWrapper');
-    if (wrapper.requestFullscreen) wrapper.requestFullscreen();
-    else if (wrapper.webkitRequestFullscreen) wrapper.webkitRequestFullscreen();
+  // ── Hide loader when iframe fires onload ──
+  function hideLoader(id) {
+    const el = document.getElementById(id);
+    if (el) el.classList.add('hidden');
   }
 
-  // ── Play counter (localStorage, no backend needed) ──
-  function updatePlayCount() {
-    const key = 'degen_plays_' + new Date().toDateString();
-    let count = parseInt(localStorage.getItem(key) || '0') + 1;
-    localStorage.setItem(key, count);
-    document.getElementById('playCount').textContent =
-      count.toLocaleString();
+  // ── Fullscreen any wrapper ──
+  function goFS(wrapperId) {
+    const el = document.getElementById(wrapperId);
+    if (!el) return;
+    const req = el.requestFullscreen
+      || el.webkitRequestFullscreen
+      || el.mozRequestFullScreen
+      || el.msRequestFullscreen;
+    if (req) req.call(el);
   }
-  updatePlayCount();
+
+  // ── Fallback: hide loaders after 6s in case onload doesn't fire ──
+  setTimeout(() => hideLoader('loader-slope'), 6000);
+  setTimeout(() => hideLoader('loader-gdash'), 8000);
 </script>
 
 </body>
