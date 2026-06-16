@@ -10,24 +10,28 @@
   <meta property="og:url" content="https://degenarcade.online"/>
   <meta name="theme-color" content="#08080f"/>
 
+  <!-- ═══ ADSTERRA — POPUNDER ═══ -->
+  <script src="https://pl29753474.effectivecpmnetwork.com/e2/43/35/e2433575ba0d9df20b95216ce8c71441.js"></script>
+
+  <!-- ═══ ADSTERRA — SOCIAL BAR (auto-injects sticky bar) ═══ -->
+  <script src="https://pl29753475.effectivecpmnetwork.com/8a/f1/92/8af19274f1834cbab3b978fbc49dfdd0.js"></script>
+
   <style>
-    /* ── TOKENS ── */
     :root {
-      --bg:       #08080f;
-      --surface:  #0e0e1c;
-      --card:     #13132a;
-      --border:   #1e1e3a;
-      --accent:   #e63946;
-      --gold:     #f4a261;
-      --text:     #eeeeff;
-      --muted:    #6666aa;
-      --radius:   10px;
-      --font-d:   'Arial Black', Impact, sans-serif;
-      --font-b:   'Segoe UI', system-ui, sans-serif;
+      --bg:      #08080f;
+      --surface: #0e0e1c;
+      --card:    #13132a;
+      --border:  #1e1e3a;
+      --accent:  #e63946;
+      --gold:    #f4a261;
+      --text:    #eeeeff;
+      --muted:   #6666aa;
+      --radius:  10px;
+      --font-d:  'Arial Black', Impact, sans-serif;
+      --font-b:  'Segoe UI', system-ui, sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -36,6 +40,8 @@
       font-family: var(--font-b);
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
+      /* leave room for Adsterra social bar at bottom */
+      padding-bottom: 60px;
     }
 
     /* ── NAV ── */
@@ -43,7 +49,7 @@
       position: sticky;
       top: 0;
       z-index: 200;
-      background: rgba(8,8,15,0.95);
+      background: rgba(8,8,15,0.96);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
@@ -76,8 +82,8 @@
       text-transform: uppercase;
     }
 
-    /* ── AD SLOTS ── */
-    .ad {
+    /* ── AD WRAPPER ── */
+    .ad-wrap {
       width: 100%;
       min-height: 60px;
       background: var(--surface);
@@ -87,29 +93,22 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-    }
-
-    .ad-label {
-      font-size: 0.6rem;
-      color: var(--muted);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      opacity: 0.5;
+      padding: 4px 0;
     }
 
     /* ── HERO ── */
     .hero {
       text-align: center;
-      padding: 28px 16px 16px;
+      padding: 24px 16px 12px;
     }
 
     .hero-eyebrow {
       display: inline-block;
-      background: rgba(230,57,70,0.15);
+      background: rgba(230,57,70,0.12);
       border: 1px solid rgba(230,57,70,0.3);
       border-radius: 20px;
       padding: 4px 12px;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: var(--accent);
       letter-spacing: 1.5px;
       text-transform: uppercase;
@@ -118,7 +117,7 @@
 
     .hero h1 {
       font-family: var(--font-d);
-      font-size: clamp(1.4rem, 6vw, 2.2rem);
+      font-size: clamp(1.4rem, 6vw, 2.1rem);
       line-height: 1.1;
       letter-spacing: -1px;
       margin-bottom: 6px;
@@ -133,29 +132,25 @@
     }
 
     .hero-sub {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--muted);
       max-width: 300px;
       margin: 0 auto;
       line-height: 1.5;
     }
 
-    /* ── GAME GRID ── */
+    /* ── GAMES GRID ── */
     .games {
-      padding: 16px;
+      padding: 14px 14px 0;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 16px;
       max-width: 860px;
       margin: 0 auto;
     }
 
-    /* On desktop show side by side */
     @media (min-width: 700px) {
-      .games {
-        flex-direction: row;
-        align-items: flex-start;
-      }
+      .games { flex-direction: row; align-items: flex-start; }
       .game-block { flex: 1; }
     }
 
@@ -190,29 +185,19 @@
       border-radius: 4px;
     }
 
-    .tag-hot {
-      background: rgba(230,57,70,0.2);
-      color: var(--accent);
-      border: 1px solid rgba(230,57,70,0.3);
-    }
+    .tag-hot  { background: rgba(230,57,70,0.18); color: var(--accent); border: 1px solid rgba(230,57,70,0.3); }
+    .tag-viral{ background: rgba(244,162,97,0.18); color: var(--gold);   border: 1px solid rgba(244,162,97,0.3); }
 
-    .tag-viral {
-      background: rgba(244,162,97,0.2);
-      color: var(--gold);
-      border: 1px solid rgba(244,162,97,0.3);
-    }
-
-    /* ── IFRAME CONTAINER ── */
+    /* ── IFRAME BOX ── */
     .iframe-box {
       position: relative;
       width: 100%;
-      /* 4:3 feels better for mobile game play */
       padding-bottom: 75%;
       background: #000;
     }
 
     @media (min-width: 700px) {
-      .iframe-box { padding-bottom: 65%; }
+      .iframe-box { padding-bottom: 62%; }
     }
 
     .iframe-box iframe {
@@ -224,8 +209,7 @@
       display: block;
     }
 
-    /* Loading overlay */
-    .iframe-box .loader {
+    .loader {
       position: absolute;
       inset: 0;
       display: flex;
@@ -239,8 +223,7 @@
     }
 
     .loader-ring {
-      width: 32px;
-      height: 32px;
+      width: 30px; height: 30px;
       border: 3px solid var(--border);
       border-top-color: var(--accent);
       border-radius: 50%;
@@ -249,12 +232,7 @@
 
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    .loader-text {
-      font-size: 0.72rem;
-      color: var(--muted);
-      letter-spacing: 1px;
-    }
-
+    .loader-text { font-size: 0.7rem; color: var(--muted); letter-spacing: 1px; }
     .loader.hidden { opacity: 0; pointer-events: none; }
 
     /* ── GAME FOOTER ── */
@@ -266,10 +244,7 @@
       border-top: 1px solid var(--border);
     }
 
-    .game-desc {
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
+    .game-desc { font-size: 0.7rem; color: var(--muted); }
 
     .fs-btn {
       background: var(--surface);
@@ -277,48 +252,47 @@
       color: var(--text);
       padding: 5px 10px;
       border-radius: 5px;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       cursor: pointer;
       font-family: var(--font-b);
-      transition: border-color 0.2s, color 0.2s;
+      transition: border-color 0.15s, color 0.15s;
       white-space: nowrap;
     }
-
-    .fs-btn:hover, .fs-btn:active {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
+    .fs-btn:hover, .fs-btn:active { border-color: var(--accent); color: var(--accent); }
 
     /* ── CHALLENGE STRIP ── */
-    .challenge-strip {
-      margin: 4px 16px 16px;
+    .challenge {
+      max-width: 860px;
+      margin: 14px auto 0;
+      padding: 0 14px;
+    }
+
+    .challenge-inner {
       padding: 12px 14px;
-      background: linear-gradient(135deg, rgba(230,57,70,0.08), rgba(244,162,97,0.08));
-      border: 1px solid rgba(230,57,70,0.2);
+      background: linear-gradient(135deg, rgba(230,57,70,0.07), rgba(244,162,97,0.07));
+      border: 1px solid rgba(230,57,70,0.18);
       border-radius: var(--radius);
       display: flex;
       align-items: center;
       gap: 12px;
-      max-width: 860px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
-    .challenge-strip .icon { font-size: 1.3rem; flex-shrink: 0; }
+    .challenge-inner .icon { font-size: 1.3rem; flex-shrink: 0; }
 
-    .challenge-strip p {
-      font-size: 0.8rem;
+    .challenge-inner p {
+      font-size: 0.78rem;
       line-height: 1.45;
       color: var(--muted);
     }
 
-    .challenge-strip strong { color: var(--text); }
+    .challenge-inner strong { color: var(--text); }
 
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
       padding: 20px 16px;
       text-align: center;
+      margin-top: 20px;
     }
 
     .footer-logo {
@@ -331,35 +305,12 @@
       margin-bottom: 6px;
     }
 
-    footer p {
-      font-size: 0.68rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
+    footer p { font-size: 0.68rem; color: var(--muted); line-height: 1.7; }
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--text); }
-
-    /* ── POPUNDER / SOCIAL BAR — Adsterra injects these, no extra CSS needed ── */
   </style>
 </head>
 <body>
-
-<!-- ═══════════════════════════════════════
-     ADSTERRA — SOCIAL BAR
-     Paste your Social Bar script tag here <script src="https://pl29753475.effectivecpmnetwork.com/8a/f1/92/8af19274f1834cbab3b978fbc49dfdd0.js"></script>
-
-     It auto-injects a sticky bar, no div needed
-════════════════════════════════════════ -->
-<!-- ADSTERRA_SOCIAL_BAR_SCRIPT -->
-
-<!-- ═══════════════════════════════════════
-     ADSTERRA — POPUNDER
-     Paste your Popunder script tag here
-<script src="https://pl29753474.effectivecpmnetwork.com/e2/43/35/e2433575ba0d9df20b95216ce8c71441.js"></script>
-════════════════════════════════════════ -->
-<!-- ADSTERRA_POPUNDER_SCRIPT -->
-
 
 <!-- NAV -->
 <nav>
@@ -367,15 +318,11 @@
   <span class="nav-pill">Free · No Login</span>
 </nav>
 
-
-<!-- ═══ AD TOP — Native Banner ═══ -->
-<div class="ad" id="ad-top">
-  <!-- ADSTERRA_NATIVE_BANNER_TOP --><script async="async" data-cfasync="false" src="https://pl29753476.effectivecpmnetwork.com/738c225236e24ffb39c9161fd85a435a/invoke.js"></script>
-<div id="container-738c225236e24ffb39c9161fd85a435a"></div>
-
-  <span class="ad-label">Advertisement</span>
+<!-- ═══ ADSTERRA NATIVE BANNER — TOP ═══ -->
+<div class="ad-wrap">
+  <script async="async" data-cfasync="false" src="https://pl29753476.effectivecpmnetwork.com/738c225236e24ffb39c9161fd85a435a/invoke.js"></script>
+  <div id="container-738c225236e24ffb39c9161fd85a435a"></div>
 </div>
-
 
 <!-- HERO -->
 <div class="hero">
@@ -384,24 +331,21 @@
   <p class="hero-sub">Scientists say these are the most addictive browser games on the internet. Don't say we didn't warn you.</p>
 </div>
 
-
 <!-- GAMES -->
 <div class="games">
 
-  <!-- ── SLOPE ── -->
-  <div class="game-block" id="block-slope">
+  <!-- SLOPE -->
+  <div class="game-block">
     <div class="game-header">
       <span class="game-name">Slope</span>
       <span class="game-tag tag-hot">🔥 Most Played</span>
     </div>
-
     <div class="iframe-box" id="wrap-slope">
       <div class="loader" id="loader-slope">
         <div class="loader-ring"></div>
-        <span class="loader-text">Loading game...</span>
+        <span class="loader-text">Loading...</span>
       </div>
       <iframe
-        id="iframe-slope"
         src="https://slope-unblocked.github.io/"
         title="Slope Game"
         allow="fullscreen"
@@ -411,28 +355,24 @@
         onload="hideLoader('loader-slope')"
       ></iframe>
     </div>
-
     <div class="game-footer">
-      <span class="game-desc">Arrow keys or A/D · Survive as long as you can</span>
+      <span class="game-desc">← → keys · Survive as long as you can</span>
       <button class="fs-btn" onclick="goFS('wrap-slope')">⛶ Full</button>
     </div>
   </div>
 
-
-  <!-- ── GEOMETRY DASH ── -->
-  <div class="game-block" id="block-gdash">
+  <!-- GEOMETRY DASH -->
+  <div class="game-block">
     <div class="game-header">
       <span class="game-name">Geometry Dash</span>
       <span class="game-tag tag-viral">📈 Viral</span>
     </div>
-
     <div class="iframe-box" id="wrap-gdash">
       <div class="loader" id="loader-gdash">
         <div class="loader-ring"></div>
-        <span class="loader-text">Loading game...</span>
+        <span class="loader-text">Loading...</span>
       </div>
       <iframe
-        id="iframe-gdash"
         src="https://geometry-dash-game.github.io/"
         title="Geometry Dash"
         allow="fullscreen"
@@ -442,29 +382,27 @@
         onload="hideLoader('loader-gdash')"
       ></iframe>
     </div>
-
     <div class="game-footer">
-      <span class="game-desc">Tap or Space · Time your jumps perfectly</span>
+      <span class="game-desc">Space or tap · Time your jumps</span>
       <button class="fs-btn" onclick="goFS('wrap-gdash')">⛶ Full</button>
     </div>
   </div>
 
 </div>
 
-
-<!-- CHALLENGE STRIP -->
-<div class="challenge-strip">
-  <span class="icon">🎯</span>
-  <p><strong>Can you last 60 seconds on Slope?</strong> Most people rage quit before 30. Geometry Dash has a 1% completion rate. Both are free. Both will ruin your sleep.</p>
+<!-- CHALLENGE -->
+<div class="challenge">
+  <div class="challenge-inner">
+    <span class="icon">🎯</span>
+    <p><strong>Can you last 60 seconds on Slope?</strong> Most people rage quit before 30. Geometry Dash has a 1% completion rate. Both free. Both will ruin your sleep.</p>
+  </div>
 </div>
 
-
-<!-- ═══ AD BOTTOM — Native Banner ═══ -->
-<div class="ad" id="ad-bottom">
-  <!-- ADSTERRA_NATIVE_BANNER_BOTTOM -->
-  <span class="ad-label">Advertisement</span>
+<!-- ═══ ADSTERRA NATIVE BANNER — BOTTOM ═══ -->
+<div class="ad-wrap" style="margin-top:16px;">
+  <script async="async" data-cfasync="false" src="https://pl29753476.effectivecpmnetwork.com/738c225236e24ffb39c9161fd85a435a/invoke.js"></script>
+  <div id="container-738c225236e24ffb39c9161fd85a435a2"></div>
 </div>
-
 
 <!-- FOOTER -->
 <footer>
@@ -475,26 +413,19 @@
   </p>
 </footer>
 
-
 <script>
-  // ── Hide loader when iframe fires onload ──
   function hideLoader(id) {
     const el = document.getElementById(id);
     if (el) el.classList.add('hidden');
   }
 
-  // ── Fullscreen any wrapper ──
-  function goFS(wrapperId) {
-    const el = document.getElementById(wrapperId);
+  function goFS(id) {
+    const el = document.getElementById(id);
     if (!el) return;
-    const req = el.requestFullscreen
-      || el.webkitRequestFullscreen
-      || el.mozRequestFullScreen
-      || el.msRequestFullscreen;
-    if (req) req.call(el);
+    const fn = el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen;
+    if (fn) fn.call(el);
   }
 
-  // ── Fallback: hide loaders after 6s in case onload doesn't fire ──
   setTimeout(() => hideLoader('loader-slope'), 6000);
   setTimeout(() => hideLoader('loader-gdash'), 8000);
 </script>
