@@ -10,410 +10,274 @@
   <meta property="og:url" content="https://degenarcade.online"/>
   <meta name="theme-color" content="#08080f"/>
 
-  <!-- ═══ ADSTERRA — POPUNDER ═══ -->
   <script src="https://pl29753474.effectivecpmnetwork.com/e2/43/35/e2433575ba0d9df20b95216ce8c71441.js"></script>
-
-  <!-- ═══ ADSTERRA — SOCIAL BAR (auto-injects sticky bar) ═══ -->
   <script src="https://pl29753475.effectivecpmnetwork.com/8a/f1/92/8af19274f1834cbab3b978fbc49dfdd0.js"></script>
 
   <style>
     :root {
-      --bg:      #08080f;
-      --surface: #0e0e1c;
-      --card:    #13132a;
-      --border:  #1e1e3a;
-      --accent:  #e63946;
-      --gold:    #f4a261;
-      --text:    #eeeeff;
-      --muted:   #6666aa;
-      --radius:  10px;
-      --font-d:  'Arial Black', Impact, sans-serif;
-      --font-b:  'Segoe UI', system-ui, sans-serif;
+      --bg: #08080f; --surface: #0e0e1c; --card: #13132a; --border: #1e1e3a;
+      --accent: #e63946; --gold: #f4a261; --text: #eeeeff; --muted: #6666aa;
+      --radius: 10px;
+      --font-d: 'Arial Black', Impact, sans-serif;
+      --font-b: 'Segoe UI', system-ui, sans-serif;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-b);
-      min-height: 100vh;
-      -webkit-font-smoothing: antialiased;
-      /* leave room for Adsterra social bar at bottom */
-      padding-bottom: 60px;
+      background: var(--bg); color: var(--text); font-family: var(--font-b);
+      min-height: 100vh; -webkit-font-smoothing: antialiased; padding-bottom: 60px;
     }
-
-    /* ── NAV ── */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 200;
-      background: rgba(8,8,15,0.96);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 16px;
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(8,8,15,0.96); backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
+      height: 50px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px;
     }
-
     .logo {
-      font-family: var(--font-d);
-      font-size: clamp(1rem, 4vw, 1.3rem);
+      font-family: var(--font-d); font-size: clamp(1rem, 4vw, 1.3rem);
       background: linear-gradient(90deg, var(--accent) 0%, var(--gold) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-decoration: none;
-      letter-spacing: -0.5px;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none; letter-spacing: -0.5px;
     }
-
     .nav-pill {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 4px 10px;
-      font-size: 0.65rem;
-      color: var(--muted);
-      letter-spacing: 1px;
-      text-transform: uppercase;
+      background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+      padding: 4px 10px; font-size: 0.65rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase;
     }
-
-    /* ── AD WRAPPER ── */
     .ad-wrap {
-      width: 100%;
-      min-height: 60px;
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      padding: 4px 0;
+      width: 100%; min-height: 60px; background: var(--surface);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 4px 0;
     }
-
-    /* ── HERO ── */
-    .hero {
-      text-align: center;
-      padding: 24px 16px 12px;
-    }
-
+    .hero { text-align: center; padding: 24px 16px 12px; }
     .hero-eyebrow {
-      display: inline-block;
-      background: rgba(230,57,70,0.12);
-      border: 1px solid rgba(230,57,70,0.3);
-      border-radius: 20px;
-      padding: 4px 12px;
-      font-size: 0.68rem;
-      color: var(--accent);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
+      display: inline-block; background: rgba(230,57,70,0.12); border: 1px solid rgba(230,57,70,0.3);
+      border-radius: 20px; padding: 4px 12px; font-size: 0.68rem; color: var(--accent);
+      letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px;
     }
+    .hero h1 { font-family: var(--font-d); font-size: clamp(1.4rem, 6vw, 2.1rem); line-height: 1.1; letter-spacing: -1px; margin-bottom: 6px; }
+    .hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--accent), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { font-size: 0.8rem; color: var(--muted); max-width: 300px; margin: 0 auto; line-height: 1.5; }
 
-    .hero h1 {
-      font-family: var(--font-d);
-      font-size: clamp(1.4rem, 6vw, 2.1rem);
-      line-height: 1.1;
-      letter-spacing: -1px;
-      margin-bottom: 6px;
+    /* GAME SELECTION */
+    .game-select { display: flex; flex-direction: row; gap: 12px; padding: 14px; max-width: 860px; margin: 0 auto; }
+    .select-card {
+      flex: 1; position: relative; background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden; cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      animation: glow-pulse 2.5s ease-in-out infinite;
     }
-
-    .hero h1 em {
-      font-style: normal;
-      background: linear-gradient(90deg, var(--accent), var(--gold));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 6px rgba(230,57,70,0.15), 0 0 20px rgba(230,57,70,0.05), inset 0 0 0 1px rgba(230,57,70,0.2); }
+      50% { box-shadow: 0 0 14px rgba(230,57,70,0.35), 0 0 40px rgba(230,57,70,0.12), inset 0 0 0 1px rgba(230,57,70,0.4); }
     }
-
-    .hero-sub {
-      font-size: 0.8rem;
-      color: var(--muted);
-      max-width: 300px;
-      margin: 0 auto;
-      line-height: 1.5;
+    .select-card:nth-child(2) { animation-name: glow-pulse-gold; }
+    @keyframes glow-pulse-gold {
+      0%, 100% { box-shadow: 0 0 6px rgba(244,162,97,0.15), 0 0 20px rgba(244,162,97,0.05), inset 0 0 0 1px rgba(244,162,97,0.2); }
+      50% { box-shadow: 0 0 14px rgba(244,162,97,0.35), 0 0 40px rgba(244,162,97,0.12), inset 0 0 0 1px rgba(244,162,97,0.4); }
     }
-
-    /* ── GAMES GRID ── */
-    .games {
-      padding: 14px 14px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      max-width: 860px;
-      margin: 0 auto;
+    .select-card:hover { transform: translateY(-4px) scale(1.02); }
+    .select-card:active { transform: scale(0.98); }
+    .select-thumb { width: 100%; aspect-ratio: 4/3; background: #0a0a1a; position: relative; overflow: hidden; }
+    .select-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
+    .select-card:hover .select-thumb img { transform: scale(1.08); }
+    .select-thumb::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%); pointer-events: none; }
+    .select-play-overlay {
+      position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 6px; padding: 6px 16px; border-radius: 20px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      border: 1px solid var(--accent); color: var(--accent); background: rgba(230,57,70,0.15);
+      backdrop-filter: blur(4px); z-index: 2; transition: all 0.2s; white-space: nowrap;
     }
+    .select-card:nth-child(2) .select-play-overlay { border-color: var(--gold); color: var(--gold); background: rgba(244,162,97,0.15); }
+    .select-card:hover .select-play-overlay { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .select-card:nth-child(2):hover .select-play-overlay { background: var(--gold); color: #000; border-color: var(--gold); }
+    .select-info { padding: 10px 12px; text-align: center; }
+    .select-name { font-family: var(--font-d); font-size: clamp(0.8rem, 3vw, 1rem); letter-spacing: -0.3px; margin-bottom: 2px; }
+    .select-tag { display: inline-block; font-size: 0.55rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; }
+    .tag-hot { background: rgba(230,57,70,0.18); color: var(--accent); border: 1px solid rgba(230,57,70,0.3); }
+    .tag-viral { background: rgba(244,162,97,0.18); color: var(--gold); border: 1px solid rgba(244,162,97,0.3); }
 
-    @media (min-width: 700px) {
-      .games { flex-direction: row; align-items: flex-start; }
-      .game-block { flex: 1; }
-    }
-
-    /* ── GAME BLOCK ── */
-    .game-block {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-
-    .game-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 14px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .game-name {
-      font-family: var(--font-d);
-      font-size: 1rem;
-      letter-spacing: -0.3px;
-    }
-
-    .game-tag {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 3px 8px;
-      border-radius: 4px;
-    }
-
-    .tag-hot  { background: rgba(230,57,70,0.18); color: var(--accent); border: 1px solid rgba(230,57,70,0.3); }
-    .tag-viral{ background: rgba(244,162,97,0.18); color: var(--gold);   border: 1px solid rgba(244,162,97,0.3); }
-
-    /* ── IFRAME BOX ── */
-    .iframe-box {
-      position: relative;
-      width: 100%;
-      padding-bottom: 75%;
-      background: #000;
-    }
-
-    @media (min-width: 700px) {
-      .iframe-box { padding-bottom: 62%; }
-    }
-
-    .iframe-box iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
-
-    .loader {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: var(--card);
-      z-index: 2;
-      transition: opacity 0.4s;
-    }
-
-    .loader-ring {
-      width: 30px; height: 30px;
-      border: 3px solid var(--border);
-      border-top-color: var(--accent);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-
+    /* ACTIVE GAME */
+    .game-active { display: none; padding: 14px; max-width: 860px; margin: 0 auto; animation: fadeIn 0.35s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .game-active.show { display: block; }
+    .game-block { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: 0 0 30px rgba(230,57,70,0.08); }
+    .game-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid var(--border); }
+    .game-name { font-family: var(--font-d); font-size: 1rem; letter-spacing: -0.3px; }
+    .game-tag { font-size: 0.6rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; }
+    .back-btn { background: var(--surface); border: 1px solid var(--border); color: var(--muted); padding: 5px 12px; border-radius: 5px; font-size: 0.7rem; cursor: pointer; font-family: var(--font-b); transition: all 0.15s; display: flex; align-items: center; gap: 4px; }
+    .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .iframe-box { position: relative; width: 100%; padding-bottom: 75%; background: #000; }
+    @media (min-width: 700px) { .iframe-box { padding-bottom: 56%; } }
+    .iframe-box iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; display: block; }
+    .loader { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: var(--card); z-index: 2; transition: opacity 0.4s; }
+    .loader-ring { width: 30px; height: 30px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
-
     .loader-text { font-size: 0.7rem; color: var(--muted); letter-spacing: 1px; }
     .loader.hidden { opacity: 0; pointer-events: none; }
-
-    /* ── GAME FOOTER ── */
-    .game-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 8px 14px;
-      border-top: 1px solid var(--border);
-    }
-
+    .game-footer { display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; border-top: 1px solid var(--border); }
     .game-desc { font-size: 0.7rem; color: var(--muted); }
-
-    .fs-btn {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-size: 0.7rem;
-      cursor: pointer;
-      font-family: var(--font-b);
-      transition: border-color 0.15s, color 0.15s;
-      white-space: nowrap;
-    }
+    .fs-btn { background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 5px 10px; border-radius: 5px; font-size: 0.7rem; cursor: pointer; font-family: var(--font-b); transition: border-color 0.15s, color 0.15s; white-space: nowrap; }
     .fs-btn:hover, .fs-btn:active { border-color: var(--accent); color: var(--accent); }
 
-    /* ── CHALLENGE STRIP ── */
-    .challenge {
-      max-width: 860px;
-      margin: 14px auto 0;
-      padding: 0 14px;
-    }
-
-    .challenge-inner {
-      padding: 12px 14px;
-      background: linear-gradient(135deg, rgba(230,57,70,0.07), rgba(244,162,97,0.07));
-      border: 1px solid rgba(230,57,70,0.18);
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
+    .challenge { max-width: 860px; margin: 14px auto 0; padding: 0 14px; }
+    .challenge-inner { padding: 12px 14px; background: linear-gradient(135deg, rgba(230,57,70,0.07), rgba(244,162,97,0.07)); border: 1px solid rgba(230,57,70,0.18); border-radius: var(--radius); display: flex; align-items: center; gap: 12px; }
     .challenge-inner .icon { font-size: 1.3rem; flex-shrink: 0; }
-
-    .challenge-inner p {
-      font-size: 0.78rem;
-      line-height: 1.45;
-      color: var(--muted);
-    }
-
+    .challenge-inner p { font-size: 0.78rem; line-height: 1.45; color: var(--muted); }
     .challenge-inner strong { color: var(--text); }
 
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 20px 16px;
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .footer-logo {
-      font-family: var(--font-d);
-      font-size: 0.95rem;
-      background: linear-gradient(90deg, var(--accent), var(--gold));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 6px;
-    }
-
+    footer { border-top: 1px solid var(--border); padding: 20px 16px; text-align: center; margin-top: 20px; }
+    .footer-logo { font-family: var(--font-d); font-size: 0.95rem; background: linear-gradient(90deg, var(--accent), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 6px; }
     footer p { font-size: 0.68rem; color: var(--muted); line-height: 1.7; }
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--text); }
+    .hidden { display: none !important; }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a class="logo" href="/">DEGENARCADE</a>
   <span class="nav-pill">Free · No Login</span>
 </nav>
 
-<!-- ═══ ADSTERRA NATIVE BANNER — TOP ═══ -->
 <div class="ad-wrap">
   <script async="async" data-cfasync="false" src="https://pl29753476.effectivecpmnetwork.com/738c225236e24ffb39c9161fd85a435a/invoke.js"></script>
   <div id="container-738c225236e24ffb39c9161fd85a435a"></div>
 </div>
 
-<!-- HERO -->
-<div class="hero">
+<div class="hero" id="hero-section">
   <span class="hero-eyebrow">🔴 Live Now</span>
   <h1>Two games.<br/><em>Zero excuses.</em></h1>
   <p class="hero-sub">Scientists say these are the most addictive browser games on the internet. Don't say we didn't warn you.</p>
 </div>
 
-<!-- GAMES -->
-<div class="games">
+<div class="game-select" id="game-select">
 
-  <!-- SLOPE -->
-  <div class="game-block">
-    <div class="game-header">
-      <span class="game-name">Slope</span>
-      <span class="game-tag tag-hot">🔥 Most Played</span>
+  <div class="select-card" onclick="launchGame('slope')">
+    <div class="select-thumb">
+      <img src="https://kimi-web-img.moonshot.cn/img/slope-gameonline.io/1daa622df60f6e3e854bbf71f22584fb4b4998e3.jpeg" alt="Slope 3" loading="eager"/>
+      <div class="select-play-overlay">▶ Play Now</div>
     </div>
-    <div class="iframe-box" id="wrap-slope">
-      <div class="loader" id="loader-slope">
+    <div class="select-info">
+      <span class="select-tag tag-hot">🔥 Most Played</span>
+      <div class="select-name">Slope 3</div>
+    </div>
+  </div>
+
+  <div class="select-card" onclick="launchGame('gdash')">
+    <div class="select-thumb">
+      <img src="https://kimi-web-img.moonshot.cn/img/static.wikia.nocookie.net/90a828597d59bcdb804b081297d3c380c3b03d72" alt="Geometry Dash" loading="eager"/>
+      <div class="select-play-overlay">▶ Play Now</div>
+    </div>
+    <div class="select-info">
+      <span class="select-tag tag-viral">📈 Viral</span>
+      <div class="select-name">Geometry Dash</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="game-active" id="game-active">
+  <div class="game-block" id="active-game-block">
+    <div class="game-header">
+      <span class="game-name" id="active-game-name">Slope 3</span>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <span class="game-tag" id="active-game-tag">🔥 Most Played</span>
+        <button class="back-btn" onclick="backToSelect()">← Back</button>
+      </div>
+    </div>
+    <div class="iframe-box" id="active-wrap">
+      <div class="loader" id="active-loader">
         <div class="loader-ring"></div>
         <span class="loader-text">Loading...</span>
       </div>
       <iframe
-        src="https://slope-unblocked.github.io/"
-        title="Slope Game"
+        id="active-iframe"
+        src=""
+        title="Game"
         allow="fullscreen"
         allowfullscreen
         loading="eager"
         scrolling="no"
-        onload="hideLoader('loader-slope')"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+        referrerpolicy="no-referrer"
+        onload="hideLoader('active-loader')"
       ></iframe>
     </div>
     <div class="game-footer">
-      <span class="game-desc">← → keys · Survive as long as you can</span>
-      <button class="fs-btn" onclick="goFS('wrap-slope')">⛶ Full</button>
+      <span class="game-desc" id="active-game-desc">← → keys · Survive as long as you can</span>
+      <button class="fs-btn" onclick="goFS('active-wrap')">⛶ Fullscreen</button>
     </div>
   </div>
-
-  <!-- GEOMETRY DASH -->
-  <div class="game-block">
-    <div class="game-header">
-      <span class="game-name">Geometry Dash</span>
-      <span class="game-tag tag-viral">📈 Viral</span>
-    </div>
-    <div class="iframe-box" id="wrap-gdash">
-      <div class="loader" id="loader-gdash">
-        <div class="loader-ring"></div>
-        <span class="loader-text">Loading...</span>
-      </div>
-      <iframe
-        src="https://geometry-dash-game.github.io/"
-        title="Geometry Dash"
-        allow="fullscreen"
-        allowfullscreen
-        loading="lazy"
-        scrolling="no"
-        onload="hideLoader('loader-gdash')"
-      ></iframe>
-    </div>
-    <div class="game-footer">
-      <span class="game-desc">Space or tap · Time your jumps</span>
-      <button class="fs-btn" onclick="goFS('wrap-gdash')">⛶ Full</button>
-    </div>
-  </div>
-
 </div>
 
-<!-- CHALLENGE -->
-<div class="challenge">
+<div class="challenge" id="challenge-section">
   <div class="challenge-inner">
     <span class="icon">🎯</span>
-    <p><strong>Can you last 60 seconds on Slope?</strong> Most people rage quit before 30. Geometry Dash has a 1% completion rate. Both free. Both will ruin your sleep.</p>
+    <p><strong>Can you last 60 seconds on Slope 3?</strong> Most people rage quit before 30. Geometry Dash has a 1% completion rate. Both free. Both will ruin your sleep.</p>
   </div>
 </div>
 
-<!-- ═══ ADSTERRA NATIVE BANNER — BOTTOM ═══ -->
-<div class="ad-wrap" style="margin-top:16px;">
+<div class="ad-wrap" style="margin-top:16px;" id="bottom-ad">
   <script async="async" data-cfasync="false" src="https://pl29753476.effectivecpmnetwork.com/738c225236e24ffb39c9161fd85a435a/invoke.js"></script>
   <div id="container-738c225236e24ffb39c9161fd85a435a2"></div>
 </div>
 
-<!-- FOOTER -->
-<footer>
+<footer id="footer-section">
   <div class="footer-logo">DEGENARCADE</div>
-  <p>
-    Free browser games. No downloads. No BS.<br/>
-    <a href="#">Privacy Policy</a> · <a href="mailto:hello@degenarcade.online">Contact</a>
-  </p>
+  <p>Free browser games. No downloads. No BS.<br/><a href="#">Privacy Policy</a> · <a href="mailto:hello@degenarcade.online">Contact</a></p>
 </footer>
 
 <script>
+  const GAMES = {
+    slope: {
+      name: 'Slope 3',
+      tag: '🔥 Most Played',
+      tagClass: 'tag-hot',
+      desc: '← → keys · Survive as long as you can',
+      // GameDistribution official embed — clean, no text splash, responsive
+      src: 'https://html5.gamedistribution.com/0022998ce3c54962be6ffe178229b168/?gd_sdk_referrer_url=https://degenarcade.online'
+    },
+    gdash: {
+      name: 'Geometry Dash',
+      tag: '📈 Viral',
+      tagClass: 'tag-viral',
+      desc: 'Space or tap · Time your jumps',
+      src: 'https://rawcdn.githack.com/genizy/google-class/main/gdlite/'
+    }
+  };
+
+  function launchGame(gameKey) {
+    const game = GAMES[gameKey];
+    if (!game) return;
+    document.getElementById('game-select').classList.add('hidden');
+    document.getElementById('challenge-section').classList.add('hidden');
+    document.getElementById('bottom-ad').classList.add('hidden');
+    const active = document.getElementById('game-active');
+    active.classList.add('show');
+    document.getElementById('active-game-name').textContent = game.name;
+    const tagEl = document.getElementById('active-game-tag');
+    tagEl.textContent = game.tag;
+    tagEl.className = 'game-tag ' + game.tagClass;
+    document.getElementById('active-game-desc').textContent = game.desc;
+    const loader = document.getElementById('active-loader');
+    loader.classList.remove('hidden');
+    const iframe = document.getElementById('active-iframe');
+    iframe.src = game.src;
+    setTimeout(() => { active.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 50);
+    setTimeout(() => hideLoader('active-loader'), 8000);
+  }
+
+  function backToSelect() {
+    document.getElementById('active-iframe').src = '';
+    document.getElementById('game-active').classList.remove('show');
+    document.getElementById('game-select').classList.remove('hidden');
+    document.getElementById('challenge-section').classList.remove('hidden');
+    document.getElementById('bottom-ad').classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   function hideLoader(id) {
     const el = document.getElementById(id);
     if (el) el.classList.add('hidden');
@@ -422,12 +286,15 @@
   function goFS(id) {
     const el = document.getElementById(id);
     if (!el) return;
-    const fn = el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen;
+    const fn = el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen || el.msRequestFullscreen;
     if (fn) fn.call(el);
   }
 
-  setTimeout(() => hideLoader('loader-slope'), 6000);
-  setTimeout(() => hideLoader('loader-gdash'), 8000);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.getElementById('game-active').classList.contains('show')) {
+      backToSelect();
+    }
+  });
 </script>
 
 </body>
