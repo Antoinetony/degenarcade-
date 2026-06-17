@@ -10,8 +10,11 @@
   <meta property="og:url" content="https://degenarcade.online"/>
   <meta name="theme-color" content="#08080f"/>
 
-  <script src="https://pl29753474.effectivecpmnetwork.com/e2/43/35/e2433575ba0d9df20b95216ce8c71441.js"></script>
-  <script src="https://pl29753475.effectivecpmnetwork.com/8a/f1/92/8af19274f1834cbab3b978fbc49dfdd0.js"></script>
+  <!-- ═══ ADSTERRA — POPUNDER ═══ -->
+  <script src="https://debutpoignantsudden.com/e2/43/35/e2433575ba0d9df20b95216ce8c71441.js"></script>
+
+  <!-- ═══ ADSTERRA — SOCIAL BAR (auto-injects sticky bar) ═══ -->
+  <script src="https://debutpoignantsudden.com/8a/f1/92/8af19274f1834cbab3b978fbc49dfdd0.js"></script>
 
   <style>
     :root {
@@ -43,11 +46,19 @@
       background: var(--card); border: 1px solid var(--border); border-radius: 20px;
       padding: 4px 10px; font-size: 0.65rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase;
     }
+
+    /* ── AD WRAPPER (Native Banner) ── */
     .ad-wrap {
       width: 100%; min-height: 60px; background: var(--surface);
       border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 4px 0;
     }
+    .ad-wrap-native {
+      width: 100%; min-height: 120px; background: var(--surface);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 8px 0;
+    }
+
     .hero { text-align: center; padding: 24px 16px 12px; }
     .hero-eyebrow {
       display: inline-block; background: rgba(230,57,70,0.12); border: 1px solid rgba(230,57,70,0.3);
@@ -58,7 +69,9 @@
     .hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--accent), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .hero-sub { font-size: 0.8rem; color: var(--muted); max-width: 300px; margin: 0 auto; line-height: 1.5; }
 
-    /* GAME SELECTION */
+    /* ════════════════════════════════════════════
+       GAME SELECTION (side-by-side cards)
+       ════════════════════════════════════════════ */
     .game-select { display: flex; flex-direction: row; gap: 12px; padding: 14px; max-width: 860px; margin: 0 auto; }
     .select-card {
       flex: 1; position: relative; background: var(--card); border: 1px solid var(--border);
@@ -97,7 +110,9 @@
     .tag-hot { background: rgba(230,57,70,0.18); color: var(--accent); border: 1px solid rgba(230,57,70,0.3); }
     .tag-viral { background: rgba(244,162,97,0.18); color: var(--gold); border: 1px solid rgba(244,162,97,0.3); }
 
-    /* ACTIVE GAME */
+    /* ════════════════════════════════════════════
+       ACTIVE GAME VIEW
+       ════════════════════════════════════════════ */
     .game-active { display: none; padding: 14px; max-width: 860px; margin: 0 auto; animation: fadeIn 0.35s ease; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     .game-active.show { display: block; }
@@ -141,8 +156,9 @@
   <span class="nav-pill">Free · No Login</span>
 </nav>
 
-<div class="ad-wrap">
-  <script async="async" data-cfasync="false" src="https://pl29753476.effectivecpmnetwork.com/738c225236e24ffb39c9161fd85a435a/invoke.js"></script>
+<!-- ═══ ADSTERRA NATIVE BANNER — TOP ═══ -->
+<div class="ad-wrap-native">
+  <script async="async" data-cfasync="false" src="https://debutpoignantsudden.com/738c225236e24ffb39c9161fd85a435a/invoke.js"></script>
   <div id="container-738c225236e24ffb39c9161fd85a435a"></div>
 </div>
 
@@ -176,6 +192,12 @@
     </div>
   </div>
 
+</div>
+
+<!-- ═══ ADSTERRA NATIVE BANNER — BETWEEN GAMES & GAME ═══ -->
+<div class="ad-wrap-native" style="margin-top:12px;">
+  <script async="async" data-cfasync="false" src="https://debutpoignantsudden.com/738c225236e24ffb39c9161fd85a435a/invoke.js"></script>
+  <div id="container-738c225236e24ffb39c9161fd85a435a-mid"></div>
 </div>
 
 <div class="game-active" id="game-active">
@@ -219,9 +241,10 @@
   </div>
 </div>
 
-<div class="ad-wrap" style="margin-top:16px;" id="bottom-ad">
-  <script async="async" data-cfasync="false" src="https://pl29753476.effectivecpmnetwork.com/738c225236e24ffb39c9161fd85a435a/invoke.js"></script>
-  <div id="container-738c225236e24ffb39c9161fd85a435a2"></div>
+<!-- ═══ ADSTERRA NATIVE BANNER — BOTTOM ═══ -->
+<div class="ad-wrap-native" style="margin-top:16px;">
+  <script async="async" data-cfasync="false" src="https://debutpoignantsudden.com/738c225236e24ffb39c9161fd85a435a/invoke.js"></script>
+  <div id="container-738c225236e24ffb39c9161fd85a435a-bot"></div>
 </div>
 
 <footer id="footer-section">
@@ -236,7 +259,6 @@
       tag: '🔥 Most Played',
       tagClass: 'tag-hot',
       desc: '← → keys · Survive as long as you can',
-      // GameDistribution official embed — clean, no text splash, responsive
       src: 'https://html5.gamedistribution.com/0022998ce3c54962be6ffe178229b168/?gd_sdk_referrer_url=https://degenarcade.online'
     },
     gdash: {
