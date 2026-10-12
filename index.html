@@ -56,22 +56,19 @@ nav{z-index:200}
 .pick .play{display:block;margin-top:8px;background:var(--accent);color:#fff;text-align:center;border-radius:8px;padding:8px;font-weight:700;font-size:.8rem}
 @media(min-width:700px){.pick{aspect-ratio:16/9}}
 
-/* player */
-#player{display:none;margin-top:6px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+/* immersive player: covers the whole screen */
+#player{display:none;position:fixed;inset:0;z-index:2147483000;background:#000;margin:0;border:0;border-radius:0}
 #player.on{display:block}
-.ph{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;border-bottom:1px solid var(--border)}
-.ph .t{font-family:var(--fd);font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.btns{display:flex;gap:6px;flex-shrink:0}
-.btn{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px;font-size:.72rem;cursor:pointer;font-family:inherit}
-.btn:hover,.btn:active{border-color:var(--accent);color:var(--accent)}
-.frame{position:relative;width:100%;background:#000;aspect-ratio:16/10}
-@media(max-width:699px){.frame{aspect-ratio:3/4}}
+.frame{position:absolute;inset:0;background:#000}
 .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
-.ldr{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--card);z-index:2;transition:opacity .4s}
+.ldr{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#000;z-index:2;transition:opacity .4s}
 .ldr.h{opacity:0;pointer-events:none}
 .ring{width:30px;height:30px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:s .8s linear infinite}
 @keyframes s{to{transform:rotate(360deg)}}
-.pf{padding:8px 12px;font-size:.7rem;color:var(--muted);border-top:1px solid var(--border)}
+#cl{position:absolute;z-index:5;top:calc(8px + env(safe-area-inset-top));left:calc(8px + env(safe-area-inset-left));width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.55);color:#fff;font-size:16px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:.7;padding:0;font-family:inherit}
+#cl:hover,#cl:active{opacity:1;border-color:var(--accent)}
+body.playing{overflow:hidden}
+body.playing::before,body.playing::after{display:none}
 
 .adw{margin:16px 0;min-height:60px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 
@@ -105,23 +102,12 @@ footer a{color:var(--muted);text-decoration:none}
 
 <div class="wrap">
   <!-- THE TWO OPTIONS -->
-  <div class="picks" id="picks" style="margin-top:14px">
-    <button class="pick gd" data-url="https://html5.gamemonetize.co/p2p9llsb78ugrgqzp95x9a6gon3nvvfo/" data-title="GeometryRush" data-hint="Tap or press space · Time your jumps">
-      <div class="bg"><img src="https://img.gamemonetize.com/p2p9llsb78ugrgqzp95x9a6gon3nvvfo/512x384.jpg" alt="" onerror="this.remove()"><div class="wm">GeometryRush</div></div>
-      <div class="info"><div class="nm">GeometryRush</div><span class="tg">📈 Viral</span><span class="play">▶ PLAY</span></div>
-    </button>
-    <button class="pick slope" data-url="https://html5.gamemonetize.co/xsdhcwwkr1v7xhzx661raou0zmcdf9df/" data-title="Mag Roller" data-hint="Roll, dodge, survive">
-      <div class="bg"><img src="https://img.gamemonetize.com/xsdhcwwkr1v7xhzx661raou0zmcdf9df/512x384.jpg" alt="" onerror="this.remove()"><div class="wm">Mag Roller</div></div>
-      <div class="info"><div class="nm">Mag Roller</div><span class="tg">🔥 Most Played</span><span class="play">▶ PLAY</span></div>
-    </button>
-  </div>
+  <div class="picks" id="picks" style="margin-top:14px"></div>
 
-  <!-- PLAYER (opens in place, no redirect) -->
+  <!-- PLAYER: full-screen overlay with a small back button -->
   <div id="player">
-    <div class="ph"><span class="t" id="pt"></span>
-      <div class="btns"><button class="btn" id="fs">⛶ Full</button><button class="btn" id="cl">✕ Close</button></div></div>
     <div class="frame" id="frame"><div class="ldr" id="ldr"><div class="ring"></div></div></div>
-    <div class="pf" id="pf"></div>
+    <button id="cl" aria-label="Back">✕</button>
   </div>
 
   <!-- NATIVE BANNER (one per page: the container id must be unique) -->
@@ -160,10 +146,10 @@ footer a{color:var(--muted);text-decoration:none}
     {id:'86706',title:'Mag Roller',category:'Arcade',url:'https://html5.gamemonetize.co/xsdhcwwkr1v7xhzx661raou0zmcdf9df/',thumb:'https://img.gamemonetize.com/xsdhcwwkr1v7xhzx661raou0zmcdf9df/512x384.jpg'},
     {id:'85688',title:'MarbleMaze2',category:'Arcade',url:'https://html5.gamemonetize.co/04juwgelsxdddyb8698nur9wu6ewxt8l/',thumb:'https://img.gamemonetize.com/04juwgelsxdddyb8698nur9wu6ewxt8l/512x384.jpg'},
     {id:'85432',title:'Dash Hero',category:'Arcade',url:'https://html5.gamemonetize.co/rrq98w912s5jferm6uxtvf13efrmv8d2/',thumb:'https://img.gamemonetize.com/rrq98w912s5jferm6uxtvf13efrmv8d2/512x384.jpg'},
-    {id:'85656',title:'Square Fling',category:'Arcade',url:'https://html5.gamemonetize.co/lslo22hs4fnhiks9hhpf4l2djlgasqke/',thumb:'https://img.gamemonetize.com/lslo22hs4fnhiks9hhpf4l2djlgasqke/512x384.jpg'},
+    {id:'85656',tags:'Mobile',title:'Square Fling',category:'Arcade',url:'https://html5.gamemonetize.co/lslo22hs4fnhiks9hhpf4l2djlgasqke/',thumb:'https://img.gamemonetize.com/lslo22hs4fnhiks9hhpf4l2djlgasqke/512x384.jpg'},
     {id:'85627',title:'Going Up Rooftop',category:'Action',url:'https://html5.gamemonetize.co/zefxa3eihgcjlrko840mqbn2libfecp5/',thumb:'https://img.gamemonetize.com/zefxa3eihgcjlrko840mqbn2libfecp5/512x384.jpg'},
     {id:'86078',title:'Ragdoll Rush 3D: Sky Race',category:'Action',url:'https://html5.gamemonetize.co/s81mxt5hul5zjjiv32c3we5tcgbd3m36/',thumb:'https://img.gamemonetize.com/s81mxt5hul5zjjiv32c3we5tcgbd3m36/512x384.jpg'},
-    {id:'85551',title:'Crazy Bus Escape Runner',category:'Action',url:'https://html5.gamemonetize.co/tktierqxsemt0iifx5x9had63otarsz0/',thumb:'https://img.gamemonetize.com/tktierqxsemt0iifx5x9had63otarsz0/512x384.jpg'},
+    {id:'85551',tags:'Mobile',title:'Crazy Bus Escape Runner',category:'Action',url:'https://html5.gamemonetize.co/tktierqxsemt0iifx5x9had63otarsz0/',thumb:'https://img.gamemonetize.com/tktierqxsemt0iifx5x9had63otarsz0/512x384.jpg'},
     {id:'87937',title:'Nutty Rush',category:'Arcade',url:'https://html5.gamemonetize.co/zy741crr2w6wqwhqocgcp8cwgr7rau5y/',thumb:'https://img.gamemonetize.com/zy741crr2w6wqwhqocgcp8cwgr7rau5y/512x384.jpg'},
     {id:'87616',title:'Grass Rush Adventure',category:'Adventure',url:'https://html5.gamemonetize.co/t1a6y3txgx1n9b1bhurm0dihg1ruwcrk/',thumb:'https://img.gamemonetize.com/t1a6y3txgx1n9b1bhurm0dihg1ruwcrk/512x384.jpg'},
     {id:'85434',title:'Taxi Rush',category:'Racing',url:'https://html5.gamemonetize.co/5jzzwvgh5ljmtvgawdsjtio83tpqry6f/',thumb:'https://img.gamemonetize.com/5jzzwvgh5ljmtvgawdsjtio83tpqry6f/512x384.jpg'},
@@ -178,7 +164,7 @@ footer a{color:var(--muted);text-decoration:none}
     {id:'85569',title:'Obby Tower: Only Up!',category:'Arcade',url:'https://html5.gamemonetize.co/bfc1hrckc0biabxdvh7tev75sepg78d8/',thumb:'https://img.gamemonetize.com/bfc1hrckc0biabxdvh7tev75sepg78d8/512x384.jpg'},
     {id:'85681',title:'Obby: Lucky Block Heist',category:'Arcade',url:'https://html5.gamemonetize.co/ewnvpyog4cz5pd8fexlrkw1eqaxzzx49/',thumb:'https://img.gamemonetize.com/ewnvpyog4cz5pd8fexlrkw1eqaxzzx49/512x384.jpg'},
     {id:'87652',title:'+1 Speed Superhero Obby',category:'Arcade',url:'https://html5.gamemonetize.co/xrlww31pl1jvsrk9xo2vsqzahqn4088n/',thumb:'https://img.gamemonetize.com/xrlww31pl1jvsrk9xo2vsqzahqn4088n/512x384.jpg'},
-    {id:'86384',title:'Bike Obby Draw Pencil',category:'Arcade',url:'https://html5.gamemonetize.co/y6wq6n3z1bh9xf8lorl7uve5sz2d2uha/',thumb:'https://img.gamemonetize.com/y6wq6n3z1bh9xf8lorl7uve5sz2d2uha/512x384.jpg'},
+    {id:'86384',tags:'Mobile',title:'Bike Obby Draw Pencil',category:'Arcade',url:'https://html5.gamemonetize.co/y6wq6n3z1bh9xf8lorl7uve5sz2d2uha/',thumb:'https://img.gamemonetize.com/y6wq6n3z1bh9xf8lorl7uve5sz2d2uha/512x384.jpg'},
     {id:'86631',title:'Tower platformer 3D',category:'Adventure',url:'https://html5.gamemonetize.co/son6w4zjinxw7b1s8yd6y7c6tosoqzs5/',thumb:'https://img.gamemonetize.com/son6w4zjinxw7b1s8yd6y7c6tosoqzs5/512x384.jpg'},
     {id:'85887',title:'Mononinja',category:'Adventure',url:'https://html5.gamemonetize.co/7qmnjc70vh04fy0hj0sdx6n9c2ug8fue/',thumb:'https://img.gamemonetize.com/7qmnjc70vh04fy0hj0sdx6n9c2ug8fue/512x384.jpg'},
     {id:'85947',title:'URBAN JUMP',category:'Adventure',url:'https://html5.gamemonetize.co/vwxrl49jbzmysbvwccpze3tmkly09jj9/',thumb:'https://img.gamemonetize.com/vwxrl49jbzmysbvwccpze3tmkly09jj9/512x384.jpg'},
@@ -186,10 +172,10 @@ footer a{color:var(--muted);text-decoration:none}
     {id:'85798',title:'HURDLES',category:'Sports',url:'https://html5.gamemonetize.co/c949dg0t8o3i8oykfuwinevumjysy9tr/',thumb:'https://img.gamemonetize.com/c949dg0t8o3i8oykfuwinevumjysy9tr/512x384.jpg'},
     {id:'85686',title:'Jumpy Rabbits',category:'Arcade',url:'https://html5.gamemonetize.co/k7k78iql0afx62m9bqo8sjk9dv8b2t5c/',thumb:'https://img.gamemonetize.com/k7k78iql0afx62m9bqo8sjk9dv8b2t5c/512x384.jpg'},
     {id:'87679',title:'Legiontide Army Runner',category:'Strategy',url:'https://html5.gamemonetize.co/sxsjr5xy86lzvr831z9ri6k063vh1so9/',thumb:'https://img.gamemonetize.com/sxsjr5xy86lzvr831z9ri6k063vh1so9/512x384.jpg'},
-    {id:'87261',title:'Dog Runaway',category:'Action',url:'https://html5.gamemonetize.co/0d8wqm8egu0pvx8j0cotpaxsnvvbwszt/',thumb:'https://img.gamemonetize.com/0d8wqm8egu0pvx8j0cotpaxsnvvbwszt/512x384.jpg'},
+    {id:'87261',tags:'Mobile',title:'Dog Runaway',category:'Action',url:'https://html5.gamemonetize.co/0d8wqm8egu0pvx8j0cotpaxsnvvbwszt/',thumb:'https://img.gamemonetize.com/0d8wqm8egu0pvx8j0cotpaxsnvvbwszt/512x384.jpg'},
     {id:'85657',title:'Spike Sphere',category:'Casual',url:'https://html5.gamemonetize.co/0pesd8fujs4dmc6qkhvt134ouk4p46c2/',thumb:'https://img.gamemonetize.com/0pesd8fujs4dmc6qkhvt134ouk4p46c2/512x384.jpg'},
     {id:'85428',title:'Octopus Run',category:'Casual',url:'https://html5.gamemonetize.co/5ddqj5p1kkf7uhxai25ll7xyci1qgdcd/',thumb:'https://img.gamemonetize.com/5ddqj5p1kkf7uhxai25ll7xyci1qgdcd/512x384.jpg'},
-    {id:'88063',title:'Block Tower Smash',category:'Casual',url:'https://html5.gamemonetize.co/ay5t0139zdhgonrxncxd28j1ynrr0ntc/',thumb:'https://img.gamemonetize.com/ay5t0139zdhgonrxncxd28j1ynrr0ntc/512x384.jpg'},
+    {id:'88063',tags:'Mobile',title:'Block Tower Smash',category:'Casual',url:'https://html5.gamemonetize.co/ay5t0139zdhgonrxncxd28j1ynrr0ntc/',thumb:'https://img.gamemonetize.com/ay5t0139zdhgonrxncxd28j1ynrr0ntc/512x384.jpg'},
     {id:'86744',title:'Flappy Halloween Game',category:'Casual',url:'https://html5.gamemonetize.co/g7c8wa9jccqy56jw9ahxb0aqjx6p2zwa/',thumb:'https://img.gamemonetize.com/g7c8wa9jccqy56jw9ahxb0aqjx6p2zwa/512x384.jpg'},
     {id:'87321',title:'Last Garage: Zombie Road',category:'Action',url:'https://html5.gamemonetize.co/v8dz10q6cfukpco6k4xqp0xauhuyc7kc/',thumb:'https://img.gamemonetize.com/v8dz10q6cfukpco6k4xqp0xauhuyc7kc/512x384.jpg'},
     {id:'87655',title:'WOBBLE IT',category:'Puzzle',url:'https://html5.gamemonetize.co/fr85ydryhol83ceqd3lp4e513tzen940/',thumb:'https://img.gamemonetize.com/fr85ydryhol83ceqd3lp4e513tzen940/512x384.jpg'},
@@ -198,30 +184,65 @@ footer a{color:var(--muted);text-decoration:none}
     {id:'88055',title:'Line Color 2D',category:'Puzzle',url:'https://html5.gamemonetize.co/erq3upnl7ngb12xt630z62xb1lbtogqb/',thumb:'https://img.gamemonetize.com/erq3upnl7ngb12xt630z62xb1lbtogqb/512x384.jpg'},
   ];
 
-  /* ---------- player ---------- */
-  function openGame(url,title,hint){
+  /* ---------- device ---------- */
+  var TOUCH=(window.matchMedia&&matchMedia('(pointer:coarse)').matches)||('ontouchstart' in window&&innerWidth<1024);
+
+  /* ---------- player (immersive) ---------- */
+  var isOpen=false;
+  function openGame(url,title){
     var fr=$('frame');
     var old=fr.querySelector('iframe'); if(old) old.remove();
     $('ldr').classList.remove('h');
     var f=document.createElement('iframe');
-    f.src=url; f.title=title; f.allow='fullscreen; autoplay; gamepad'; f.allowFullscreen=true;
-    // sandbox without allow-top-navigation / allow-popups: games cannot redirect or open other tabs
+    f.src=url; f.title=title; f.allow='fullscreen; autoplay; gamepad; accelerometer; gyroscope'; f.allowFullscreen=true;
+    // sandbox without top-navigation / popups: a game can't redirect the page or open tabs
     f.setAttribute('sandbox','allow-scripts allow-same-origin allow-pointer-lock allow-forms');
     f.onload=function(){$('ldr').classList.add('h')};
     fr.appendChild(f);
     setTimeout(function(){$('ldr').classList.add('h')},7000);
-    $('pt').textContent=title; $('pf').textContent=hint||'Tap the game to start · use Full for the best view';
-    $('player').classList.add('on');
-    $('player').scrollIntoView({behavior:'smooth',block:'start'});
+    $('player').classList.add('on'); document.body.classList.add('playing');
+    if(!isOpen){ try{history.pushState({game:1},'')}catch(e){} }
+    isOpen=true;
+    // true fullscreen + landscape where the browser allows it (Android/desktop); iOS keeps the overlay
+    var p=$('player'), rf=p.requestFullscreen||p.webkitRequestFullscreen;
+    if(rf){ try{ var r=rf.call(p); if(r&&r.then) r.then(function(){ if(TOUCH&&screen.orientation&&screen.orientation.lock){ screen.orientation.lock('landscape').catch(function(){}) } }).catch(function(){}) }catch(e){} }
   }
-  function closeGame(){
+  function closeGame(fromPop){
+    if(!isOpen) return;
+    isOpen=false;
     var f=$('frame').querySelector('iframe'); if(f) f.remove();
-    $('player').classList.remove('on');
+    $('player').classList.remove('on'); document.body.classList.remove('playing');
+    try{ if(screen.orientation&&screen.orientation.unlock) screen.orientation.unlock() }catch(e){}
+    try{ if(document.fullscreenElement) document.exitFullscreen(); else if(document.webkitFullscreenElement) document.webkitExitFullscreen() }catch(e){}
+    if(fromPop!==true){ try{ if(history.state&&history.state.game) history.back() }catch(e){} }
   }
-  $('cl').onclick=closeGame;
-  $('fs').onclick=function(){var f=$('frame');var fn=f.requestFullscreen||f.webkitRequestFullscreen;if(fn)fn.call(f)};
-  Array.prototype.forEach.call(document.querySelectorAll('.pick'),function(b){
-    b.onclick=function(){openGame(b.dataset.url,b.dataset.title,b.dataset.hint)};
+  $('cl').onclick=function(){closeGame()};
+  window.addEventListener('popstate',function(){closeGame(true)});
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeGame() });
+  // leaving browser fullscreen (Esc / swipe) also leaves the game
+  document.addEventListener('fullscreenchange',function(){ if(!document.fullscreenElement&&isOpen) closeGame() });
+
+  /* ---------- the two big picks (desktop and phone get games that suit them) ---------- */
+  var PICKS_DESKTOP=[
+    {cls:'gd',tag:'📈 Viral',title:'GeometryRush',url:'https://html5.gamemonetize.co/p2p9llsb78ugrgqzp95x9a6gon3nvvfo/',thumb:'https://img.gamemonetize.com/p2p9llsb78ugrgqzp95x9a6gon3nvvfo/512x384.jpg'},
+    {cls:'slope',tag:'🔥 Most Played',title:'Mag Roller',url:'https://html5.gamemonetize.co/xsdhcwwkr1v7xhzx661raou0zmcdf9df/',thumb:'https://img.gamemonetize.com/xsdhcwwkr1v7xhzx661raou0zmcdf9df/512x384.jpg'}
+  ];
+  var PICKS_TOUCH=[
+    {cls:'gd',tag:'📈 Viral',title:'Square Fling',url:'https://html5.gamemonetize.co/lslo22hs4fnhiks9hhpf4l2djlgasqke/',thumb:'https://img.gamemonetize.com/lslo22hs4fnhiks9hhpf4l2djlgasqke/512x384.jpg'},
+    {cls:'slope',tag:'🔥 Most Played',title:'Crazy Bus Escape Runner',url:'https://html5.gamemonetize.co/tktierqxsemt0iifx5x9had63otarsz0/',thumb:'https://img.gamemonetize.com/tktierqxsemt0iifx5x9had63otarsz0/512x384.jpg'}
+  ];
+  (TOUCH?PICKS_TOUCH:PICKS_DESKTOP).forEach(function(g){
+    var b=document.createElement('button'); b.className='pick '+g.cls;
+    var bg=document.createElement('div'); bg.className='bg';
+    var im=document.createElement('img'); im.alt=''; im.src=g.thumb; im.onerror=function(){im.remove()};
+    var wm=document.createElement('div'); wm.className='wm'; wm.textContent=g.title;
+    bg.appendChild(im); bg.appendChild(wm);
+    var info=document.createElement('div'); info.className='info';
+    info.innerHTML='<div class="nm"></div><span class="tg"></span><span class="play">▶ PLAY</span>';
+    info.querySelector('.nm').textContent=g.title; info.querySelector('.tg').textContent=g.tag;
+    b.appendChild(bg); b.appendChild(info);
+    b.onclick=function(){openGame(g.url,g.title)};
+    $('picks').appendChild(b);
   });
 
   /* ---------- feed ---------- */
@@ -250,7 +271,7 @@ footer a{color:var(--muted);text-decoration:none}
 
   /* ---------- browse ---------- */
   function cats(){
-    var c={}; ALL.forEach(function(g){c[g.category]=(c[g.category]||0)+1});
+    var c={}; ALL.forEach(function(g){ if(TOUCH&&!/mobile/i.test(g.tags||'')) return; c[g.category]=(c[g.category]||0)+1});
     var names=Object.keys(c).sort(function(a,b){return c[b]-c[a]}).slice(0,12);
     var el=$('chips'); el.innerHTML='';
     ['All'].concat(names).forEach(function(n){
@@ -261,6 +282,7 @@ footer a{color:var(--muted);text-decoration:none}
   function filtered(){
     var q=query.toLowerCase();
     return ALL.filter(function(g){
+      if(TOUCH&&!/mobile/i.test(g.tags||'')) return false;
       return (cat==='All'||g.category===cat)&&(!q||g.title.toLowerCase().indexOf(q)>-1||(g.tags||'').toLowerCase().indexOf(q)>-1);
     });
   }
@@ -274,7 +296,7 @@ footer a{color:var(--muted);text-decoration:none}
       var im=document.createElement('img'); im.loading='lazy'; im.alt=''; im.src=g.thumb;
       var sp=document.createElement('span'); sp.textContent=g.title;
       b.appendChild(im); b.appendChild(sp);
-      b.onclick=function(){openGame(g.url,g.title,g.instructions?stripHtml(g.instructions).slice(0,140):'')};
+      b.onclick=function(){openGame(g.url,g.title)};
       grid.appendChild(b);
     });
     $('status').textContent=list.length?'':(loading?'Loading games…':'No games found. Try another search.');
