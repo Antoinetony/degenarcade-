@@ -1,0 +1,12 @@
+// Optional Vercel serverless proxy: only used if the browser can't call the feed directly (CORS).
+export default async function handler(req, res) {
+  const page = Math.max(1, parseInt(req.query.page || '1', 10) || 1);
+  try {
+    const r = await fetch(`https://gamemonetize.com/feed.php?format=0&num=100&page=${page}`);
+    const data = await r.json();
+    res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=86400');
+    res.status(200).json(data);
+  } catch (e) {
+    res.status(502).json([]);
+  }
+}
