@@ -119,7 +119,7 @@ footer a{color:var(--muted);text-decoration:none}
   <!-- BROWSE -->
   <div class="bar"><input id="q" type="search" placeholder="Search games…" autocomplete="off"/></div>
   <div class="chips" id="chips"></div>
-  <h2 class="sec" id="sec">More games</h2>
+  <h2 class="sec" id="sec">Top Games</h2>
   <div class="grid" id="grid"></div>
   <div class="empty" id="status">Loading games…</div>
   <button class="more" id="more" style="display:none">Load more games</button>
@@ -137,6 +137,9 @@ footer a{color:var(--muted);text-decoration:none}
   var $=function(i){return document.getElementById(i)};
   // small built-in fallback so the grid is never empty
   var FALLBACK=[
+    {id:'85804',title:'Highway Traffic Racer 3D',category:'Racing',url:'https://html5.gamemonetize.co/7k89f1ad0rg4ifimx4emkqh8l0tir2ne/',thumb:'https://img.gamemonetize.com/7k89f1ad0rg4ifimx4emkqh8l0tir2ne/512x384.jpg'},
+    {id:'85860',title:'Impossible Car Stunt Game',category:'Racing',url:'https://html5.gamemonetize.co/umwhoy8rec8w36678g7amz51zp3c7oak/',thumb:'https://img.gamemonetize.com/umwhoy8rec8w36678g7amz51zp3c7oak/512x384.jpg'},
+    {id:'88063',tags:'Mobile',title:'Block Tower Smash',category:'Casual',url:'https://html5.gamemonetize.co/ay5t0139zdhgonrxncxd28j1ynrr0ntc/',thumb:'https://img.gamemonetize.com/ay5t0139zdhgonrxncxd28j1ynrr0ntc/512x384.jpg'},
     {id:'87638',title:'IRONWAKE: Tank Combat',category:'Adventure',url:'https://html5.gamemonetize.co/uwucxieotni7lpxfgha1mzigh0xgzc1z/',thumb:'https://img.gamemonetize.com/uwucxieotni7lpxfgha1mzigh0xgzc1z/512x384.jpg'},
     {id:'87713',title:'Pro Football Eleven 2027',category:'Sports',url:'https://html5.gamemonetize.co/nsvqmdi6fps4dvi4a2n3yvnnvnq73ost/',thumb:'https://img.gamemonetize.com/nsvqmdi6fps4dvi4a2n3yvnnvnq73ost/512x384.jpg'},
     {id:'88008',title:'GeometryRush',category:'Arcade',url:'https://html5.gamemonetize.co/p2p9llsb78ugrgqzp95x9a6gon3nvvfo/',thumb:'https://img.gamemonetize.com/p2p9llsb78ugrgqzp95x9a6gon3nvvfo/512x384.jpg'},
@@ -154,12 +157,10 @@ footer a{color:var(--muted);text-decoration:none}
     {id:'87616',title:'Grass Rush Adventure',category:'Adventure',url:'https://html5.gamemonetize.co/t1a6y3txgx1n9b1bhurm0dihg1ruwcrk/',thumb:'https://img.gamemonetize.com/t1a6y3txgx1n9b1bhurm0dihg1ruwcrk/512x384.jpg'},
     {id:'85434',title:'Taxi Rush',category:'Racing',url:'https://html5.gamemonetize.co/5jzzwvgh5ljmtvgawdsjtio83tpqry6f/',thumb:'https://img.gamemonetize.com/5jzzwvgh5ljmtvgawdsjtio83tpqry6f/512x384.jpg'},
     {id:'86893',title:'Bike Stunt Master Mini Rush',category:'Racing',url:'https://html5.gamemonetize.co/9m7b1g3apiu7nazxcn863ymcmga4ud3y/',thumb:'https://img.gamemonetize.com/9m7b1g3apiu7nazxcn863ymcmga4ud3y/512x384.jpg'},
-    {id:'85804',title:'Highway Traffic Racer 3D',category:'Racing',url:'https://html5.gamemonetize.co/7k89f1ad0rg4ifimx4emkqh8l0tir2ne/',thumb:'https://img.gamemonetize.com/7k89f1ad0rg4ifimx4emkqh8l0tir2ne/512x384.jpg'},
     {id:'85614',title:'Extreme Highway Traffic Racer',category:'Racing',url:'https://html5.gamemonetize.co/tukw1fv5a89azcc89hihld37aoqkbota/',thumb:'https://img.gamemonetize.com/tukw1fv5a89azcc89hihld37aoqkbota/512x384.jpg'},
     {id:'85608',title:'Drifty Road Rush',category:'Racing',url:'https://html5.gamemonetize.co/6jqelogy7lrcqoqx6jt2e080c9kf6tpg/',thumb:'https://img.gamemonetize.com/6jqelogy7lrcqoqx6jt2e080c9kf6tpg/512x384.jpg'},
     {id:'86069',title:'CAR SMASH OBBY 3D',category:'Racing',url:'https://html5.gamemonetize.co/akpoe15y02690iqssyoqm6dpotmcpuxl/',thumb:'https://img.gamemonetize.com/akpoe15y02690iqssyoqm6dpotmcpuxl/512x384.jpg'},
     {id:'86073',title:'Car Obby 3D',category:'Racing',url:'https://html5.gamemonetize.co/0hbbm274a3v134mfpe2z7cgjy6ylxsji/',thumb:'https://img.gamemonetize.com/0hbbm274a3v134mfpe2z7cgjy6ylxsji/512x384.jpg'},
-    {id:'85860',title:'Impossible Car Stunt Game',category:'Racing',url:'https://html5.gamemonetize.co/umwhoy8rec8w36678g7amz51zp3c7oak/',thumb:'https://img.gamemonetize.com/umwhoy8rec8w36678g7amz51zp3c7oak/512x384.jpg'},
     {id:'87932',title:'Bean Party Obby',category:'Arcade',url:'https://html5.gamemonetize.co/1ejuc6yo1lqr4o7ae3ussgi7d7uh21oe/',thumb:'https://img.gamemonetize.com/1ejuc6yo1lqr4o7ae3ussgi7d7uh21oe/512x384.jpg'},
     {id:'85569',title:'Obby Tower: Only Up!',category:'Arcade',url:'https://html5.gamemonetize.co/bfc1hrckc0biabxdvh7tev75sepg78d8/',thumb:'https://img.gamemonetize.com/bfc1hrckc0biabxdvh7tev75sepg78d8/512x384.jpg'},
     {id:'85681',title:'Obby: Lucky Block Heist',category:'Arcade',url:'https://html5.gamemonetize.co/ewnvpyog4cz5pd8fexlrkw1eqaxzzx49/',thumb:'https://img.gamemonetize.com/ewnvpyog4cz5pd8fexlrkw1eqaxzzx49/512x384.jpg'},
@@ -175,13 +176,12 @@ footer a{color:var(--muted);text-decoration:none}
     {id:'87261',tags:'Mobile',title:'Dog Runaway',category:'Action',url:'https://html5.gamemonetize.co/0d8wqm8egu0pvx8j0cotpaxsnvvbwszt/',thumb:'https://img.gamemonetize.com/0d8wqm8egu0pvx8j0cotpaxsnvvbwszt/512x384.jpg'},
     {id:'85657',title:'Spike Sphere',category:'Casual',url:'https://html5.gamemonetize.co/0pesd8fujs4dmc6qkhvt134ouk4p46c2/',thumb:'https://img.gamemonetize.com/0pesd8fujs4dmc6qkhvt134ouk4p46c2/512x384.jpg'},
     {id:'85428',title:'Octopus Run',category:'Casual',url:'https://html5.gamemonetize.co/5ddqj5p1kkf7uhxai25ll7xyci1qgdcd/',thumb:'https://img.gamemonetize.com/5ddqj5p1kkf7uhxai25ll7xyci1qgdcd/512x384.jpg'},
-    {id:'88063',tags:'Mobile',title:'Block Tower Smash',category:'Casual',url:'https://html5.gamemonetize.co/ay5t0139zdhgonrxncxd28j1ynrr0ntc/',thumb:'https://img.gamemonetize.com/ay5t0139zdhgonrxncxd28j1ynrr0ntc/512x384.jpg'},
     {id:'86744',title:'Flappy Halloween Game',category:'Casual',url:'https://html5.gamemonetize.co/g7c8wa9jccqy56jw9ahxb0aqjx6p2zwa/',thumb:'https://img.gamemonetize.com/g7c8wa9jccqy56jw9ahxb0aqjx6p2zwa/512x384.jpg'},
     {id:'87321',title:'Last Garage: Zombie Road',category:'Action',url:'https://html5.gamemonetize.co/v8dz10q6cfukpco6k4xqp0xauhuyc7kc/',thumb:'https://img.gamemonetize.com/v8dz10q6cfukpco6k4xqp0xauhuyc7kc/512x384.jpg'},
     {id:'87655',title:'WOBBLE IT',category:'Puzzle',url:'https://html5.gamemonetize.co/fr85ydryhol83ceqd3lp4e513tzen940/',thumb:'https://img.gamemonetize.com/fr85ydryhol83ceqd3lp4e513tzen940/512x384.jpg'},
     {id:'85937',title:'Survivalist',category:'Shooting',url:'https://html5.gamemonetize.co/crvt23bbv3zouz2yvv9aktx282cpvn6p/',thumb:'https://img.gamemonetize.com/crvt23bbv3zouz2yvv9aktx282cpvn6p/512x384.jpg'},
     {id:'87047',title:'Coinbound Voodoo Nightmare',category:'Arcade',url:'https://html5.gamemonetize.co/drk4juw5qvgt9nibxjdk1qv01xlfv742/',thumb:'https://img.gamemonetize.com/drk4juw5qvgt9nibxjdk1qv01xlfv742/512x384.jpg'},
-    {id:'88055',title:'Line Color 2D',category:'Puzzle',url:'https://html5.gamemonetize.co/erq3upnl7ngb12xt630z62xb1lbtogqb/',thumb:'https://img.gamemonetize.com/erq3upnl7ngb12xt630z62xb1lbtogqb/512x384.jpg'},
+    {id:'88055',title:'Line Color 2D',category:'Puzzle',url:'https://html5.gamemonetize.co/erq3upnl7ngb12xt630z62xb1lbtogqb/',thumb:'https://img.gamemonetize.com/erq3upnl7ngb12xt630z62xb1lbtogqb/512x384.jpg'}
   ];
 
   /* ---------- device ---------- */
@@ -224,12 +224,12 @@ footer a{color:var(--muted);text-decoration:none}
 
   /* ---------- the two big picks (desktop and phone get games that suit them) ---------- */
   var PICKS_DESKTOP=[
-    {cls:'gd',tag:'📈 Viral',title:'GeometryRush',url:'https://html5.gamemonetize.co/p2p9llsb78ugrgqzp95x9a6gon3nvvfo/',thumb:'https://img.gamemonetize.com/p2p9llsb78ugrgqzp95x9a6gon3nvvfo/512x384.jpg'},
-    {cls:'slope',tag:'🔥 Most Played',title:'Mag Roller',url:'https://html5.gamemonetize.co/xsdhcwwkr1v7xhzx661raou0zmcdf9df/',thumb:'https://img.gamemonetize.com/xsdhcwwkr1v7xhzx661raou0zmcdf9df/512x384.jpg'}
+    {cls:'pb',tag:'🔥 New & Addictive',title:'People Blaster',url:'https://html5.gamemonetize.com/ebnq54fc336mgcz8uifwrqdvl85w3yaw/',thumb:'https://img.gamemonetize.com/ebnq54fc336mgcz8uifwrqdvl85w3yaw/512x384.jpg'},
+    {cls:'gd',tag:'📈 Viral',title:'Geometry Dash',url:'https://cdn.jsdelivr.net/gh/JeanTheMan/geometry-dash-web-full@main/index.html',thumb:'https://cdn.jsdelivr.net/gh/Alexx743/Alexx743-games/geometry%20dash.jpg'}
   ];
   var PICKS_TOUCH=[
-    {cls:'gd',tag:'📈 Viral',title:'Square Fling',url:'https://html5.gamemonetize.co/lslo22hs4fnhiks9hhpf4l2djlgasqke/',thumb:'https://img.gamemonetize.com/lslo22hs4fnhiks9hhpf4l2djlgasqke/512x384.jpg'},
-    {cls:'slope',tag:'🔥 Most Played',title:'Crazy Bus Escape Runner',url:'https://html5.gamemonetize.co/tktierqxsemt0iifx5x9had63otarsz0/',thumb:'https://img.gamemonetize.com/tktierqxsemt0iifx5x9had63otarsz0/512x384.jpg'}
+    {cls:'pb',tag:'🔥 New & Addictive',title:'People Blaster',url:'https://html5.gamemonetize.com/ebnq54fc336mgcz8uifwrqdvl85w3yaw/',thumb:'https://img.gamemonetize.com/ebnq54fc336mgcz8uifwrqdvl85w3yaw/512x384.jpg'},
+    {cls:'gd',tag:'📈 Viral',title:'Geometry Dash',url:'https://cdn.jsdelivr.net/gh/JeanTheMan/geometry-dash-web-full@main/index.html',thumb:'https://cdn.jsdelivr.net/gh/Alexx743/Alexx743-games/geometry%20dash.jpg'}
   ];
   (TOUCH?PICKS_TOUCH:PICKS_DESKTOP).forEach(function(g){
     var b=document.createElement('button'); b.className='pick '+g.cls;
