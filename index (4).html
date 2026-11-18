@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>DegenArcade – Play Free Games</title>
+<meta name="description" content="Play free browser games and explore the DegenArcade GTA 6 hub for guides, cheats, discoveries, files and community discussions."/>
+<meta name="keywords" content="free browser games, GTA 6 guides, GTA 6 cheats, GTA 6 discoveries, DegenArcade"/>
+<meta property="og:title" content="DegenArcade – Play Free Games"/>
+<meta property="og:description" content="Pick a game. Play instantly. Hundreds more below."/>
+<meta property="og:url" content="https://degenarcade.online"/>
+<meta name="theme-color" content="#08080f"/>
+
+<!-- ADSTERRA SOCIAL BAR -->
+<script src="https://pl29753475.profitableratecpmnetwork.com/8a/f1/92/8af19274f1834cbab3b978fbc49dfdd0.js"></script>
+
+<style>
+:root{--bg:#08080f;--surface:#0e0e1c;--card:#13132a;--border:#1e1e3a;--accent:#e63946;--gold:#f4a261;--text:#eeeeff;--muted:#7a7ab8;--r:12px;--fd:'Arial Black',Impact,sans-serif;--fb:'Segoe UI',system-ui,sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);min-height:100vh;-webkit-font-smoothing:antialiased;padding-bottom:70px}
+nav{position:sticky;top:0;z-index:200;background:rgba(8,8,15,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:50px;display:flex;align-items:center;justify-content:space-between;padding:0 16px}
+.logo{font-family:var(--fd);font-size:clamp(1rem,4vw,1.3rem);background:linear-gradient(90deg,var(--accent),var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;letter-spacing:-.5px}
+.pill{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:4px 10px;font-size:.65rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+
+/* glowing side margins */
+body::before,body::after{content:"";position:fixed;top:0;bottom:0;width:clamp(14px,5vw,70px);pointer-events:none;z-index:1;animation:glow 4s ease-in-out infinite alternate}
+body::before{left:0;background:linear-gradient(90deg,rgba(230,57,70,.55),rgba(244,162,97,.18) 55%,transparent);box-shadow:inset 3px 0 14px rgba(230,57,70,.9)}
+body::after{right:0;background:linear-gradient(270deg,rgba(124,92,255,.55),rgba(230,57,70,.18) 55%,transparent);box-shadow:inset -3px 0 14px rgba(124,92,255,.9);animation-delay:-2s}
+@keyframes glow{from{opacity:.55}to{opacity:1}}
+nav{z-index:200}
+.wrap{position:relative;z-index:2;max-width:980px;margin:0 auto;padding:0 14px}
+.hero{text-align:center;padding:22px 0 12px}
+.hero h1{font-family:var(--fd);font-size:clamp(1.4rem,6vw,2.2rem);line-height:1.1;letter-spacing:-1px}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:.82rem;color:var(--muted);margin-top:6px}
+
+/* the two big choices */
+.picks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.pick{position:relative;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;background:var(--card);cursor:pointer;aspect-ratio:4/5;display:flex;align-items:flex-end;padding:0;color:var(--text);text-align:left;font-family:inherit;transition:transform .15s,border-color .15s}
+.pick:active{transform:scale(.98)}
+
+.pick .bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pick .bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.pick .bg .wm{position:relative;z-index:0;font-family:var(--fd);text-transform:uppercase;text-align:center;line-height:.95;letter-spacing:-1px;font-size:clamp(1.7rem,9vw,2.8rem);padding:0 8px;margin-bottom:34px}
+.pick.slope .bg{background:radial-gradient(circle at 50% 35%,#0f5a3a 0%,#06140e 75%)}
+.pick.slope .wm{color:#eafff4;text-shadow:0 0 6px #2dffa0,0 0 18px #19d982,0 0 38px #19d982;transform:skewY(-6deg)}
+.pick.gd .bg{background:radial-gradient(circle at 50% 35%,#5a1a6a 0%,#10061a 75%)}
+.pick.gd .wm{font-size:clamp(1.25rem,6.6vw,2.3rem);color:#fff8d8;text-shadow:0 0 6px #ffd23a,0 0 18px #ff9f1a,0 0 38px #c24bff;-webkit-text-stroke:1px rgba(0,0,0,.4)}
+.pick.gd{animation:pgd 2.6s ease-in-out infinite alternate}
+.pick.slope{animation:psl 2.6s ease-in-out infinite alternate;animation-delay:-1.3s}
+@keyframes pgd{from{box-shadow:0 0 8px rgba(194,75,255,.35),0 0 0 1px rgba(194,75,255,.5)}to{box-shadow:0 0 28px rgba(194,75,255,.85),0 0 0 1px rgba(255,210,58,.8)}}
+@keyframes psl{from{box-shadow:0 0 8px rgba(45,255,160,.35),0 0 0 1px rgba(45,255,160,.5)}to{box-shadow:0 0 28px rgba(45,255,160,.85),0 0 0 1px rgba(45,255,160,.9)}}
+.pick .info{position:relative;z-index:2;width:100%;padding:12px;background:linear-gradient(transparent,rgba(8,8,15,.95) 60%)}
+.pick .nm{font-family:var(--fd);font-size:1.05rem}
+.pick .tg{display:inline-block;margin-top:4px;font-size:.6rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)}
+.pick .play{display:block;margin-top:8px;background:var(--accent);color:#fff;text-align:center;border-radius:8px;padding:8px;font-weight:700;font-size:.8rem}
+@media(min-width:700px){.pick{aspect-ratio:16/9}}
+
+/* immersive player: covers the whole screen */
+#player{display:none;position:fixed;inset:0;z-index:2147483000;background:#000;margin:0;border:0;border-radius:0}
+#player.on{display:block}
+.frame{position:absolute;inset:0;background:#000}
+.frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.ldr{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#000;z-index:2;transition:opacity .4s}
+.ldr.h{opacity:0;pointer-events:none}
+.ring{width:30px;height:30px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:s .8s linear infinite}
+@keyframes s{to{transform:rotate(360deg)}}
+#cl{position:absolute;z-index:5;top:calc(8px + env(safe-area-inset-top));left:calc(8px + env(safe-area-inset-left));width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.55);color:#fff;font-size:16px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:.7;padding:0;font-family:inherit}
+#cl:hover,#cl:active{opacity:1;border-color:var(--accent)}
+body.playing{overflow:hidden}
+body.playing::before,body.playing::after{display:none}
+
+.adw{margin:16px 0;min-height:60px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+
+/* browse */
+.bar{display:flex;gap:8px;margin-top:18px}
+#q{flex:1;min-width:0;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:11px 14px;color:var(--text);font-size:16px;font-family:inherit;outline:none}
+#q:focus{border-color:var(--accent)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:10px 0;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex-shrink:0;background:var(--surface);border:1px solid var(--border);color:var(--muted);border-radius:20px;padding:6px 14px;font-size:.75rem;cursor:pointer;font-family:inherit}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+h2.sec{font-family:var(--fd);font-size:1rem;margin:6px 0 10px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(min-width:600px){.grid{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:900px){.grid{grid-template-columns:repeat(6,1fr)}}
+.g{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;padding:0;color:var(--text);text-align:left;font-family:inherit;transition:transform .12s,border-color .12s}
+.g:active{transform:scale(.97)}
+.g:hover{border-color:var(--accent)}
+.g img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#000}
+.g span{display:block;padding:6px 7px;font-size:.68rem;line-height:1.25;height:2.6em;overflow:hidden}
+.more{display:block;margin:18px auto;padding:12px 28px;background:var(--surface);border:1px solid var(--border);color:var(--text);border-radius:10px;font-family:inherit;font-size:.85rem;cursor:pointer}
+.more:hover{border-color:var(--accent)}
+.empty{color:var(--muted);font-size:.85rem;text-align:center;padding:24px 0}
+footer{border-top:1px solid var(--border);padding:20px 16px;text-align:center;margin-top:20px}
+footer p{font-size:.68rem;color:var(--muted);line-height:1.7}
+footer a{color:var(--muted);text-decoration:none}
+
+/* ===== DegenArcade navigation and GTA 6 hub ===== */
+.site-nav{gap:12px}
+.nav-links{display:flex;align-items:center;gap:18px;margin-left:auto;margin-right:10px}
+.nav-links a{color:#c9c6dd;text-decoration:none;font-size:.72rem;font-weight:800;letter-spacing:.8px;white-space:nowrap}
+.nav-links a:hover{color:#fff}
+.games-heading{padding:28px 0 4px}
+.games-heading .eyebrow{color:var(--gold)}
+.games-heading h2{font-family:var(--fd);font-size:1.25rem;margin-top:4px}
+.games-heading p{font-size:.78rem;color:var(--muted);margin-top:4px}
+.gta-hub{margin:30px 0 26px;border:1px solid #29243b;border-radius:18px;overflow:hidden;background:linear-gradient(180deg,#10101b,#0b0b13 72%);box-shadow:0 18px 55px rgba(0,0,0,.28)}
+.gta-hero{position:relative;min-height:270px;display:flex;align-items:center;overflow:hidden;background:radial-gradient(ellipse at 78% 45%,rgba(135,62,202,.34),transparent 44%),radial-gradient(ellipse at 14% 90%,rgba(230,57,70,.22),transparent 42%),linear-gradient(120deg,#11101b,#171023 58%,#0c0c16)}
+.gta-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,9,17,.96) 0%,rgba(10,9,17,.78) 58%,rgba(10,9,17,.28) 100%);z-index:1}
+.gta-hero-art{position:absolute;right:-2%;top:-18%;width:54%;height:140%;opacity:.42;background:repeating-linear-gradient(115deg,transparent 0 22px,rgba(191,132,255,.18) 23px 24px),radial-gradient(ellipse at 55% 48%,#9c4de7 0,transparent 54%);transform:skewX(-12deg);filter:blur(1px)}
+.gta-hero-content{position:relative;z-index:2;padding:30px clamp(18px,4vw,42px);max-width:760px;width:100%}
+.gta-kicker,.eyebrow{font-size:.62rem;font-weight:900;letter-spacing:1.8px;color:#bca0ff;text-transform:uppercase}
+.live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#7df0b0;box-shadow:0 0 10px #7df0b0;margin-right:7px}
+.gta-hero h1{font-family:var(--fd);font-size:clamp(2rem,7vw,3.5rem);letter-spacing:-1.8px;line-height:1;margin-top:13px;color:#fff}
+.gta-hero h1 em{font-style:normal;color:#c18aff;text-shadow:0 0 24px rgba(173,106,255,.34)}
+.gta-hero-content>p{font-size:.88rem;color:#c4bfd1;line-height:1.6;margin:12px 0 18px;max-width:540px}
+.gta-search{display:flex;align-items:center;gap:10px;max-width:590px;background:#f8f7fb;border:1px solid rgba(255,255,255,.24);border-radius:10px;padding:5px 6px 5px 13px;color:#6c6678}
+.gta-search>span{font-size:1.5rem;line-height:1}
+.gta-search input{border:0;outline:0;min-width:0;flex:1;background:transparent;color:#171321;font:500 .8rem var(--fb);padding:9px 0}
+.gta-search button{border:0;border-radius:7px;background:#7538c8;color:#fff;padding:10px 13px;font-size:.66rem;font-weight:900;letter-spacing:.8px;cursor:pointer}
+.gta-quick-stats{display:flex;gap:22px;flex-wrap:wrap;margin-top:18px;color:#928ba6;font-size:.55rem;font-weight:800;letter-spacing:1px}
+.gta-quick-stats b{color:#eee9f8;margin-right:4px}
+.gta-hub-head{display:flex;justify-content:space-between;align-items:end;gap:12px;padding:25px 22px 14px}
+.gta-hub-head h2,.gta-community-cta h2{font-family:var(--fd);font-size:1.25rem;margin-top:5px;color:#f6f3ff}
+.gta-outline-btn{background:transparent;border:1px solid #40344f;color:#d9c8f5;border-radius:8px;padding:9px 12px;font:700 .7rem var(--fb);cursor:pointer;white-space:nowrap}
+.gta-outline-btn:hover{border-color:#a66bec;background:rgba(166,107,236,.08)}
+.gta-category-rail{display:flex;gap:7px;overflow-x:auto;padding:0 22px 15px;scrollbar-width:thin;scrollbar-color:#514166 transparent}
+.gta-cat{flex:0 0 auto;border:1px solid #2a2638;background:#151421;color:#aaa4ba;border-radius:20px;padding:8px 14px;font:700 .68rem var(--fb);cursor:pointer}
+.gta-cat:hover{border-color:#7650a2;color:#fff}
+.gta-cat.active{background:#6f37b8;border-color:#8d53d7;color:#fff;box-shadow:0 4px 16px rgba(111,55,184,.2)}
+.gta-feed-toolbar{display:flex;justify-content:space-between;align-items:center;padding:13px 22px;border-top:1px solid #211e2d;border-bottom:1px solid #211e2d}
+.gta-feed-toolbar h3{font-size:.95rem;color:#f2eff9}
+.gta-feed-toolbar p{font-size:.68rem;color:#8d879e;margin-top:4px}
+.gta-feed-toolbar select,.gta-admin-card select{background:#151421;border:1px solid #353044;color:#dcd6e9;border-radius:7px;padding:8px;font:600 .68rem var(--fb)}
+.gta-post-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:17px 22px}
+.gta-post-card{min-width:0;border:1px solid #292538;background:linear-gradient(145deg,#171522,#11111a);border-radius:12px;overflow:hidden;transition:transform .16s,border-color .16s}
+.gta-post-card:hover{transform:translateY(-2px);border-color:#6e4a91}
+.gta-post-cover{width:100%;aspect-ratio:16/7;object-fit:cover;background:linear-gradient(135deg,#34214b,#11101b);display:block}
+.gta-post-card-body{padding:13px}
+.gta-post-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.gta-tag{display:inline-flex;align-items:center;border-radius:4px;padding:4px 7px;background:#30213e;color:#d8b8ff;font-size:.55rem;font-weight:900;letter-spacing:.8px;text-transform:uppercase}
+.gta-verification{font-size:.57rem;font-weight:800;color:#a8a0b5}
+.gta-verification.verified{color:#83e4ad}.gta-verification.patched{color:#ff9b9b}
+.gta-post-card h4{font-size:.92rem;line-height:1.35;color:#f4f0fb;margin:10px 0 6px;overflow-wrap:anywhere}
+.gta-post-excerpt{font-size:.72rem;line-height:1.55;color:#aaa4b7;min-height:2.2em;overflow-wrap:anywhere}
+.gta-post-actions{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:13px;padding-top:10px;border-top:1px solid #292538}
+.gta-post-actions button,.gta-post-actions a{border:0;background:transparent;color:#c7a3f3;font:700 .67rem var(--fb);text-decoration:none;cursor:pointer;padding:3px 0}
+.gta-post-actions span{font-size:.62rem;color:#817b90}
+.gta-post-detail{display:none;padding:0 13px 13px;color:#c8c2d2;font-size:.76rem;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}
+.gta-post-detail.open{display:block}
+.gta-attachment{display:flex;align-items:center;gap:9px;margin-top:12px;padding:10px;border:1px solid #383047;border-radius:8px;background:#1b1726}
+.gta-attachment a{color:#d9b9ff;font-weight:800;text-decoration:none;font-size:.7rem}
+.gta-comments{border-top:1px solid #302a3d;padding:12px 13px 13px}
+.gta-comments h5{font-size:.72rem;color:#f0eafa;margin-bottom:10px}
+.gta-comment-list{display:grid;gap:9px;max-height:240px;overflow:auto}
+.gta-comment{font-size:.68rem;line-height:1.5;color:#bdb6cb;background:#1a1824;border-radius:7px;padding:8px}
+.gta-comment strong{color:#e6d7fa;margin-right:5px}
+.gta-comment time{display:block;color:#7e778e;font-size:.56rem;margin-top:3px}
+.gta-comment-form{display:flex;gap:7px;margin-top:10px}
+.gta-comment-form input{min-width:0;flex:1;background:#0e0d16;border:1px solid #373146;border-radius:7px;padding:9px;color:#f5efff;font: .7rem var(--fb)}
+.gta-comment-form button{border:0;border-radius:7px;background:#6f37b8;color:#fff;padding:0 12px;font:800 .65rem var(--fb);cursor:pointer}
+.gta-signin-prompt{font-size:.66rem;color:#a59db2;margin-top:10px}
+.gta-signin-prompt button{border:0;background:none;color:#c99cff;font:800 .66rem var(--fb);cursor:pointer}
+.gta-empty{text-align:center;padding:38px 18px;color:#9c95aa}
+.gta-empty>div{font-size:2rem;color:#b88bea}.gta-empty h3{color:#eee8f7;margin:8px 0;font-size:1rem}.gta-empty p{font-size:.75rem}
+.gta-loading{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:10px;padding:35px;color:#a49bb3;font-size:.75rem}
+.gta-spinner{width:17px;height:17px;border:2px solid #453654;border-top-color:#c18aff;border-radius:50%;animation:gta-spin .8s linear infinite}
+@keyframes gta-spin{to{transform:rotate(360deg)}}
+.gta-feed-foot{display:flex;justify-content:space-between;align-items:center;padding:0 22px 18px;color:#7f788e;font-size:.65rem}
+.gta-community-cta{display:flex;justify-content:space-between;align-items:center;gap:18px;margin:8px 22px 22px;padding:20px;border:1px solid #3a2b4b;border-radius:12px;background:radial-gradient(ellipse at 90% 10%,rgba(137,70,199,.2),transparent 50%),#171320}
+.gta-community-cta p{color:#aaa1b8;font-size:.72rem;margin-top:6px;line-height:1.5}
+.gta-primary-btn{border:0;border-radius:8px;background:linear-gradient(110deg,#7838c4,#a64cce);color:#fff;padding:12px 16px;font:900 .72rem var(--fb);cursor:pointer;box-shadow:0 7px 18px rgba(113,51,180,.2)}
+.gta-primary-btn:hover{filter:brightness(1.12)}
+.gta-modal{display:none;position:fixed;inset:0;z-index:2147483500;align-items:center;justify-content:center;padding:16px}
+.gta-modal.open{display:flex}
+.gta-modal-backdrop{position:absolute;inset:0;background:rgba(4,3,9,.82);backdrop-filter:blur(7px)}
+.gta-modal-card{position:relative;z-index:1;width:min(100%,430px);max-height:min(90vh,850px);overflow:auto;background:#151320;border:1px solid #3b304b;border-radius:15px;padding:26px;color:#f4efff;box-shadow:0 24px 80px rgba(0,0,0,.6)}
+.gta-admin-card{width:min(100%,600px)}
+.gta-modal-close{position:absolute;right:13px;top:10px;border:0;background:transparent;color:#b9b0c8;font-size:1.7rem;cursor:pointer}
+.gta-modal-mark{width:39px;height:39px;display:grid;place-items:center;border-radius:10px;background:linear-gradient(135deg,#7137bd,#b34bcb);font:900 1rem var(--fd);margin-bottom:15px}
+.gta-modal-card h2{font-family:var(--fd);font-size:1.35rem;margin-top:6px}
+.gta-modal-sub{font-size:.74rem;color:#aaa2b8;line-height:1.5;margin:7px 0 18px}
+.gta-auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:4px;background:#0d0c14;border-radius:8px;margin-bottom:16px}
+.gta-auth-tabs button{border:0;border-radius:6px;padding:9px;background:transparent;color:#a9a1b7;font:800 .7rem var(--fb);cursor:pointer}
+.gta-auth-tabs button.selected{background:#30233e;color:#fff}
+.gta-modal-card label{display:block;color:#c8c0d4;font-size:.67rem;font-weight:800;margin:12px 0 6px}
+.gta-modal-card input:not([type=file]),.gta-modal-card textarea,.gta-modal-card select{display:block;width:100%;background:#0e0d16;border:1px solid #393247;border-radius:7px;padding:11px;color:#f4efff;font: .75rem var(--fb);outline:none}
+.gta-modal-card input:focus,.gta-modal-card textarea:focus,.gta-modal-card select:focus{border-color:#a36ce0}
+.gta-modal-card input[type=file]{display:block;width:100%;font-size:.68rem;color:#bdb5ca;padding:7px 0}
+.gta-full-btn{width:100%;margin-top:17px}
+.gta-google-btn{width:100%;border:1px solid #443a50;background:#201c2a;border-radius:8px;padding:10px;color:#eee8f6;font:800 .72rem var(--fb);cursor:pointer}
+.gta-google-btn b{display:inline-grid;place-items:center;width:19px;height:19px;border-radius:50%;background:#fff;color:#4285f4;margin-right:8px}
+.gta-auth-divider{display:flex;align-items:center;gap:10px;color:#777084;font-size:.58rem;margin:15px 0}
+.gta-auth-divider:before,.gta-auth-divider:after{content:"";height:1px;background:#393246;flex:1}
+.gta-form-message{min-height:16px;color:#caa4ff;font-size:.68rem;margin-top:10px;line-height:1.5}
+.gta-terms,.gta-upload-hint{font-size:.6rem;color:#81798e;line-height:1.5;margin-top:13px}
+.gta-account-chip{display:inline-flex;align-items:center;gap:7px;color:#cbb4e9;font-size:.65rem}
+.gta-account-chip button{border:1px solid #41364f;border-radius:6px;padding:6px 8px;background:#1b1724;color:#e4d6f6;font-size:.62rem;cursor:pointer}
+.gta-admin-launch{border:1px solid #694694!important;color:#e4c9ff!important}
+@media(max-width:650px){
+ .site-nav{padding:0 10px}.nav-links{gap:10px;margin-right:0}.nav-links a{font-size:.58rem}.site-nav .pill{display:none}
+ .gta-hero{min-height:280px}.gta-hero-content{padding:25px 17px}.gta-hero:before{background:linear-gradient(90deg,rgba(10,9,17,.94),rgba(10,9,17,.68))}
+ .gta-search{gap:7px}.gta-search input{font-size:.7rem}.gta-search button{padding:10px 9px;font-size:.58rem}
+ .gta-hub-head{padding:20px 14px 12px;align-items:start}.gta-hub-head h2{font-size:1.08rem}.gta-outline-btn{font-size:.61rem;padding:8px}
+ .gta-category-rail{padding:0 14px 13px}.gta-feed-toolbar{padding:12px 14px}.gta-post-grid{grid-template-columns:1fr;padding:13px 14px;gap:10px}
+ .gta-post-cover{aspect-ratio:16/6}.gta-community-cta{margin:7px 14px 15px;padding:15px;align-items:flex-start;flex-direction:column}.gta-community-cta h2{font-size:1.05rem}
+ .gta-feed-foot{padding:0 14px 15px}.gta-modal-card{padding:22px 18px}.gta-quick-stats{gap:11px}
+}
+
+
+/* ===== VICE CITY INTERFACE REDESIGN ===== */
+:root{--bg:#070a12;--surface:#0d1320;--card:#111b2a;--border:#233346;--accent:#ff4f9a;--gold:#61e7dc;--text:#f2f7ff;--muted:#91a5b9;--fd:Impact,'Arial Black',sans-serif;--fb:Inter,'Segoe UI',system-ui,sans-serif}
+body{background:radial-gradient(ellipse at 50% -18%,rgba(35,112,135,.22),transparent 43%),#070a12;padding-bottom:30px}
+body:before{width:clamp(3px,.35vw,6px);background:linear-gradient(180deg,#ff4f9a,#61e7dc 55%,transparent);box-shadow:0 0 22px rgba(255,79,154,.4)}
+body:after{width:clamp(3px,.35vw,6px);background:linear-gradient(180deg,#61e7dc,#ff4f9a 55%,transparent);box-shadow:0 0 22px rgba(97,231,220,.35)}
+.site-nav{height:62px;padding:0 max(18px,calc((100vw - 1180px)/2));gap:16px;background:rgba(5,9,17,.94);border-bottom:1px solid rgba(97,231,220,.2)}
+.logo{font-size:1.18rem;letter-spacing:.5px}.logo span{color:#61e7dc;-webkit-text-fill-color:#61e7dc}
+.nav-status{display:flex;align-items:center;gap:8px;color:#8fa5b7;font-size:.59rem;font-weight:900;letter-spacing:1.5px;margin-left:auto}
+.nav-live-dot{width:7px;height:7px;border-radius:50%;background:#61e7dc;box-shadow:0 0 10px #61e7dc}
+.nav-account{border:1px solid #355365;background:#101b28;color:#eaf8ff;border-radius:7px;padding:9px 13px;font:900 .63rem var(--fb);letter-spacing:.8px;cursor:pointer}
+.nav-account span{color:#61e7dc;margin-left:6px}
+.top-tab-wrap{position:sticky;top:0;z-index:190;background:rgba(7,11,19,.96);backdrop-filter:blur(16px);border-bottom:1px solid #1d3040;box-shadow:0 8px 22px rgba(0,0,0,.18)}
+.top-tabs{max-width:1180px;margin:auto;display:flex;gap:5px;overflow-x:auto;padding:9px 16px;scrollbar-width:none}
+.top-tabs::-webkit-scrollbar{display:none}
+.top-tab{flex:0 0 auto;border:1px solid transparent;background:transparent;color:#91a5b9;border-radius:7px;padding:10px 14px;font:900 .65rem var(--fb);letter-spacing:.85px;cursor:pointer;white-space:nowrap;transition:.18s}
+.top-tab span{margin-right:6px;color:#61e7dc}
+.top-tab:hover{color:#fff;background:#101d2a;border-color:#263f50}
+.top-tab.active{background:linear-gradient(110deg,rgba(255,79,154,.18),rgba(97,231,220,.12));border-color:#416879;color:#fff;box-shadow:inset 0 -2px #61e7dc}
+.top-tab.games-tab{margin-left:auto;color:#d4fff9;border-color:#31565a;background:rgba(97,231,220,.08)}
+.wrap{max-width:1180px;padding:0 18px}
+.gta-hub{margin:22px 0 34px;border:1px solid #294251;border-radius:15px;background:linear-gradient(155deg,#0d1925,#0b111c 60%,#10101b);box-shadow:0 24px 70px rgba(0,0,0,.3)}
+.hub-topline{display:flex;justify-content:space-between;gap:10px;padding:12px 22px;border-bottom:1px solid rgba(97,231,220,.13);color:#6e9aa5;font-size:.56rem;font-weight:900;letter-spacing:1.8px}
+.gta-hero{min-height:350px;background:radial-gradient(ellipse at 82% 45%,rgba(255,79,154,.22),transparent 34%),radial-gradient(ellipse at 70% 70%,rgba(97,231,220,.22),transparent 42%),linear-gradient(120deg,#0c1823,#121324 58%,#1c1424)}
+.gta-hero:before{background:linear-gradient(90deg,rgba(7,12,20,.96),rgba(7,12,20,.78) 55%,rgba(7,12,20,.18))}
+.gta-hero-art{opacity:.68;background:repeating-linear-gradient(118deg,transparent 0 26px,rgba(97,231,220,.13) 27px 28px),radial-gradient(ellipse at 58% 48%,#e34b92 0,rgba(40,164,170,.55) 24%,transparent 60%);filter:blur(.3px)}
+.gta-kicker,.eyebrow{color:#61e7dc;letter-spacing:2px}
+.gta-hero h1{font-size:clamp(2.5rem,8vw,5.2rem);letter-spacing:-2px;text-shadow:0 8px 28px rgba(0,0,0,.3)}
+.gta-hero h1 em{color:#ff69a9;text-shadow:0 0 25px rgba(255,79,154,.35)}
+.gta-hero-content>p{color:#c0d0db;max-width:590px;font-size:.93rem}
+.gta-search{max-width:640px;border-radius:8px;background:#f1f7f8;border-color:#70d8d2}
+.gta-search button{background:#e74691}
+.gta-quick-stats{color:#8da6b6}.gta-quick-stats b{color:#e8ffff}
+.gta-hub-head{padding:25px 25px 15px}.gta-hub-head h2{font-size:1.35rem}
+.hub-member-note{font-size:.65rem;color:#8fa6b6;border:1px solid #2a4250;border-radius:30px;padding:9px 13px}
+.gta-category-rail{padding:0 25px 17px}
+.gta-cat{border-radius:6px;background:#111c29;border-color:#2a3b4b;color:#9fb2c2;padding:9px 15px}
+.gta-cat.active{background:#d94388;border-color:#f06ca9;color:#fff;box-shadow:0 5px 18px rgba(217,67,136,.22)}
+.gta-feed-toolbar{padding:15px 25px;border-color:#223646}
+.gta-feed-toolbar select,.gta-admin-card select{background:#111c29;border-color:#2d4857}
+.gta-post-grid{grid-template-columns:repeat(3,minmax(0,1fr));padding:20px 25px;gap:15px}
+.gta-post-card{background:linear-gradient(145deg,#142130,#101722);border-color:#273d4d;border-radius:9px}
+.gta-post-card:hover{border-color:#61bdb9}
+.gta-tag{background:rgba(255,79,154,.13);color:#ff9bc4}
+.gta-post-card h4{font-size:.98rem}
+.gta-post-actions button,.gta-post-actions a{color:#61e7dc}
+.gta-comment-form button,.gta-primary-btn{background:linear-gradient(110deg,#df438c,#b34fbd);border-radius:7px}
+.gta-community-cta{background:radial-gradient(ellipse at 90% 10%,rgba(255,79,154,.17),transparent 50%),#101c29;border-color:#355363}
+.games-view{padding:8px 0 30px;scroll-margin-top:75px}
+.games-intro{padding:26px 0 9px;border-top:1px solid #223645}
+.games-intro h2{font-family:var(--fd);font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:.3px;margin-top:6px;color:#f3fbff}
+.games-intro p{font-size:.82rem;color:#91a5b9;margin-top:7px;max-width:650px;line-height:1.6}
+.games-heading{padding:25px 0 4px}.games-heading h2{font-size:1.3rem;color:#fff}.games-heading p{font-size:.78rem;color:#8fa5b8;margin-top:5px}
+.picks{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:15px!important}
+.pick{aspect-ratio:16/6;border-radius:9px;border-color:#34505c;background:#101c29}
+.pick .info{background:linear-gradient(transparent,rgba(5,10,17,.96) 70%)}
+.pick .play{background:#e74691;border-radius:6px}
+#q{background:#101b28;border-color:#2b4252;border-radius:7px}
+.chip{background:#101b28;border-color:#2a4050;color:#9bb0c0;border-radius:6px}
+.chip.on{background:#d94388;border-color:#d94388}
+.g{background:#101b28;border-color:#263c4b;border-radius:7px}
+.g:hover{border-color:#61e7dc}
+.more{background:#101b28;border-color:#315263;border-radius:7px}
+.adw{margin:20px 0;min-height:60px}
+footer{border-color:#1f3442}footer p{color:#849cac}
+.gta-modal-card{background:#101b28;border-color:#34505f}
+.gta-modal-card input,.gta-modal-card textarea,.gta-modal-card select{background:#09131d;border-color:#2c4555;color:#f3fbff}
+.gta-modal-close{color:#d9e8ee}
+@media(max-width:760px){.site-nav{height:56px;padding:0 14px}.nav-status{display:none}.nav-account{margin-left:auto}.top-tab-wrap{top:0}.top-tabs{padding:7px 10px;gap:3px}.top-tab{padding:9px 11px;font-size:.59rem}.top-tab.games-tab{margin-left:0}.wrap{padding:0 12px}.hub-topline{padding:10px 13px;font-size:.48rem}.gta-hero{min-height:320px}.gta-hero-content{padding:26px 18px}.gta-hub-head{padding:19px 14px 12px}.gta-category-rail{padding:0 14px 13px}.gta-feed-toolbar{padding:12px 14px}.gta-post-grid{grid-template-columns:1fr;padding:13px 14px;gap:10px}.gta-community-cta{margin:7px 14px 15px}.games-intro{padding-top:20px}.picks{grid-template-columns:1fr 1fr;gap:9px}.pick{aspect-ratio:4/5}.games-heading{padding-top:20px}}
+@media(min-width:761px) and (max-width:980px){.gta-post-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="logo" href="#top" aria-label="DegenArcade home">DEGEN<span>ARCADE</span></a>
+  <div class="nav-status"><span class="nav-live-dot"></span> LEONIDA INTEL NETWORK</div>
+  <button class="nav-account" id="gta-open-auth" type="button">SIGN IN <span>↗</span></button>
+</nav>
+<div class="top-tab-wrap" id="top">
+  <div class="top-tabs" role="tablist" aria-label="DegenArcade sections">
+    <button class="top-tab active" type="button" data-top-tab="gta-hub"><span>✦</span> GTA 6 HUB</button>
+    <button class="top-tab" type="button" data-top-tab="community-feed"><span>◉</span> COMMUNITY</button>
+    <button class="top-tab" type="button" data-top-filter="cheats"><span>⌁</span> CHEATS</button>
+    <button class="top-tab" type="button" data-top-filter="guides"><span>▤</span> GUIDES</button>
+    <button class="top-tab" type="button" data-top-filter="discoveries"><span>⌖</span> DISCOVERIES</button>
+    <button class="top-tab" type="button" data-top-filter="files"><span>⇩</span> FILES</button>
+    <button class="top-tab games-tab" type="button" data-top-tab="games"><span>🎮</span> GAMES</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <!-- THE TWO OPTIONS -->
+
+  <!-- GTA 6 COMMUNITY HUB -->
+  <section id="gta-hub" class="gta-hub">
+    <div class="hub-topline"><span>DEGENARCADE PRESENTS</span><span>VICE CITY · LEONIDA · BEYOND</span></div>
+    <div class="gta-hero">
+      <div class="gta-hero-art" aria-hidden="true"></div>
+      <div class="gta-hero-content">
+        <div class="gta-kicker"><span class="live-dot"></span> DEGENARCADE COMMUNITY</div>
+        <h1>GTA 6 <em>DATABASE</em></h1>
+        <p>Cheats, guides, discoveries, files and player discussions — all in one place.</p>
+        <form id="gta-search-form" class="gta-search">
+          <span aria-hidden="true">⌕</span>
+          <input id="gta-search" type="search" placeholder="Search cheats, guides, files and discoveries..." autocomplete="off">
+          <button type="submit">SEARCH</button>
+        </form>
+        <div class="gta-quick-stats">
+          <span><b id="gta-post-count">—</b> COMMUNITY POSTS</span>
+          <span><b>5</b> CONTENT CATEGORIES</span>
+          <span><b>DAILY</b> NEW DROPS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="gta-hub-head">
+      <div><span class="eyebrow">THE LEONIDA ARCHIVE</span><h2>Explore the hub</h2></div>
+      <span class="hub-member-note">Sign in to comment · Join the archive</span>
+    </div>
+
+    <div class="gta-category-rail" id="gta-categories" aria-label="Filter GTA 6 content">
+      <button class="gta-cat active" data-category="all">All posts</button>
+      <button class="gta-cat" data-category="cheats">Cheats</button>
+      <button class="gta-cat" data-category="guides">Guides</button>
+      <button class="gta-cat" data-category="files">Files</button>
+      <button class="gta-cat" data-category="discoveries">Discoveries</button>
+      <button class="gta-cat" data-category="news">News & updates</button>
+    </div>
+
+    <div class="gta-feed-toolbar" id="community-feed">
+      <div><h3 id="gta-feed-title">Latest drops</h3><p>Fresh uploads and community resources</p></div>
+      <select id="gta-sort" aria-label="Sort posts"><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select>
+    </div>
+
+    <div id="gta-post-grid" class="gta-post-grid">
+      <div class="gta-loading"><span class="gta-spinner"></span><span>Loading the community feed...</span></div>
+    </div>
+    <div id="gta-empty" class="gta-empty" hidden>
+      <div>⌕</div><h3>No matching posts yet</h3><p>Try another search or category. New guides and discoveries will appear here.</p>
+    </div>
+    <div class="gta-feed-foot"><span id="gta-feed-status">Connecting to the DegenArcade database…</span><button id="gta-load-more" class="gta-outline-btn" hidden>Load more</button></div>
+
+    <div class="gta-community-cta">
+      <div><span class="eyebrow">JOIN THE DISCUSSION</span><h2>Know something the community doesn't?</h2><p>Sign in to comment on guides, share discoveries and join the conversation.</p></div>
+      <button id="gta-cta-auth" class="gta-primary-btn">Create your account <span>→</span></button>
+    </div>
+  </section>
+
+  <!-- AUTH MODAL -->
+  <div id="gta-auth-modal" class="gta-modal" aria-hidden="true">
+    <div class="gta-modal-backdrop" data-close-modal></div>
+    <div class="gta-modal-card" role="dialog" aria-modal="true" aria-labelledby="gta-auth-title">
+      <button class="gta-modal-close" data-close-modal aria-label="Close">×</button>
+      <div class="gta-modal-mark">DA</div>
+      <span class="eyebrow">DEGENARCADE COMMUNITY</span>
+      <h2 id="gta-auth-title">Join the conversation</h2>
+      <p class="gta-modal-sub">Create an account or sign in to comment on GTA 6 posts.</p>
+      <div class="gta-auth-tabs"><button class="selected" data-auth-mode="signup">Create account</button><button data-auth-mode="signin">Sign in</button></div>
+      <form id="gta-auth-form">
+        <label for="gta-auth-name" id="gta-name-label">Display name</label>
+        <input id="gta-auth-name" type="text" maxlength="32" placeholder="Your gamer name">
+        <label for="gta-auth-email">Email address</label>
+        <input id="gta-auth-email" type="email" required autocomplete="email" placeholder="you@example.com">
+        <label for="gta-auth-password">Password</label>
+        <input id="gta-auth-password" type="password" required minlength="8" autocomplete="current-password" placeholder="At least 8 characters">
+        <button class="gta-primary-btn gta-full-btn" type="submit" id="gta-auth-submit">Create account</button>
+      </form>
+      <div class="gta-auth-divider"><span>OR</span></div>
+      <button id="gta-google-auth" class="gta-google-btn"><b>G</b> Continue with Google</button>
+      <p id="gta-auth-message" class="gta-form-message" role="status"></p>
+      <p class="gta-terms">By joining, you agree to keep discussions respectful and follow the community rules.</p>
+    </div>
+  </div>
+
+  <!-- ADMIN PUBLISHER -->
+  <div id="gta-admin-modal" class="gta-modal" aria-hidden="true">
+    <div class="gta-modal-backdrop" data-close-modal></div>
+    <div class="gta-modal-card gta-admin-card" role="dialog" aria-modal="true" aria-labelledby="gta-admin-title">
+      <button class="gta-modal-close" data-close-modal aria-label="Close">×</button>
+      <span class="eyebrow">PRIVATE PUBLISHING TOOLS</span>
+      <h2 id="gta-admin-title">Create a new drop</h2>
+      <p class="gta-modal-sub">Publish a guide, cheat, discovery, news update or downloadable resource.</p>
+      <form id="gta-post-form">
+        <label for="gta-post-title">Post title</label><input id="gta-post-title" required maxlength="120" placeholder="e.g. Beginner's guide to Leonida">
+        <label for="gta-post-category">Category</label>
+        <select id="gta-post-category"><option value="guides">Guide</option><option value="cheats">Cheat</option><option value="discoveries">Discovery</option><option value="news">News & updates</option><option value="files">File / download</option></select>
+        <label for="gta-post-status">Verification status</label>
+        <select id="gta-post-status"><option value="unconfirmed">Unconfirmed</option><option value="verified">Verified</option><option value="patched">Patched</option></select>
+        <label for="gta-post-excerpt">Short description</label><textarea id="gta-post-excerpt" rows="2" maxlength="240" placeholder="A short summary shown in the feed..."></textarea>
+        <label for="gta-post-body">Full post / guide</label><textarea id="gta-post-body" rows="8" required placeholder="Write your guide, steps, notes and details here..."></textarea>
+        <label for="gta-post-image">Cover image (optional)</label><input id="gta-post-image" type="file" accept="image/png,image/jpeg,image/webp">
+        <label for="gta-post-file">Attach a downloadable file (optional)</label><input id="gta-post-file" type="file">
+        <p class="gta-upload-hint">Images: up to 8 MB. Attachments: up to 50 MB. Only upload files you have the right to share.</p>
+        <button class="gta-primary-btn gta-full-btn" id="gta-publish-btn" type="submit">Publish post <span>→</span></button>
+        <p id="gta-publish-message" class="gta-form-message" role="status"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- PLAYER: full-screen overlay with a small back button -->
+  <div id="player">
+    <div class="frame" id="frame"><div class="ldr" id="ldr"><div class="ring"></div></div></div>
+    <button id="cl" aria-label="Back">✕</button>
+  </div>
+
+  <!-- NATIVE BANNER (one per page: the container id must be unique) -->
+  <div class="adw">
+    <script async="async" data-cfasync="false" src="https://pl29753476.profitableratecpmnetwork.com/738c225236e24ffb39c9161fd85a435a/invoke.js"></script>
+    <div id="container-738c225236e24ffb39c9161fd85a435a"></div>
+  </div>
+
+  <!-- EXISTING FREE GAMES LIBRARY -->
+  <section id="games" class="games-view">
+    <div class="games-intro"><span class="eyebrow">THE ORIGINAL ARCADE · STILL FREE</span><h2>DROP INTO THE GAMES</h2><p>Your existing DegenArcade library stays right here. Same GameMonetize feed, same instant-play experience.</p></div>
+    <div class="picks" id="picks" style="margin-top:14px"></div>
+    <div class="games-heading"><span class="eyebrow">BROWSE THE ARCADE</span><h2>ALL GAMES</h2><p>Find a quick match, race, puzzle or arcade run.</p></div>
+  <!-- BROWSE -->
+  <div class="bar"><input id="q" type="search" placeholder="Search games…" autocomplete="off"/></div>
+  <div class="chips" id="chips"></div>
+  <h2 class="sec" id="sec">More games</h2>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="status">Loading games…</div>
+  <button class="more" id="more" style="display:none">Load more games</button>
+  </section>
+</div>
+
+<footer>
+  <p><b>DEGENARCADE</b><br/>Free browser games. No downloads. No BS.<br/>
+  <a href="#">Privacy Policy</a> · <a href="mailto:hello@degenarcade.online">Contact</a></p>
+</footer>
+
+<script>
+(function(){
+  var FEED='https://gamemonetize.com/feed.php?format=0&num=100&page=';
+  var ALL=[], seen={}, page=0, loading=false, cat='All', query='', shown=0, PER=36, done=false;
+  var $=function(i){return document.getElementById(i)};
+  // small built-in fallback so the grid is never empty
+  var FALLBACK=[
+    {id:'85804',title:'Highway Traffic Racer 3D',category:'Racing',url:'https://html5.gamemonetize.co/7k89f1ad0rg4ifimx4emkqh8l0tir2ne/',thumb:'https://img.gamemonetize.com/7k89f1ad0rg4ifimx4emkqh8l0tir2ne/512x384.jpg'},
+    {id:'85860',title:'Impossible Car Stunt Game',category:'Racing',url:'https://html5.gamemonetize.co/umwhoy8rec8w36678g7amz51zp3c7oak/',thumb:'https://img.gamemonetize.com/umwhoy8rec8w36678g7amz51zp3c7oak/512x384.jpg'},
+    {id:'88063',tags:'Mobile',title:'Block Tower Smash',category:'Casual',url:'https://html5.gamemonetize.co/ay5t0139zdhgonrxncxd28j1ynrr0ntc/',thumb:'https://img.gamemonetize.com/ay5t0139zdhgonrxncxd28j1ynrr0ntc/512x384.jpg'},
+    {id:'87638',title:'IRONWAKE: Tank Combat',category:'Adventure',url:'https://html5.gamemonetize.co/uwucxieotni7lpxfgha1mzigh0xgzc1z/',thumb:'https://img.gamemonetize.com/uwucxieotni7lpxfgha1mzigh0xgzc1z/512x384.jpg'},
+    {id:'87713',title:'Pro Football Eleven 2027',category:'Sports',url:'https://html5.gamemonetize.co/nsvqmdi6fps4dvi4a2n3yvnnvnq73ost/',thumb:'https://img.gamemonetize.com/nsvqmdi6fps4dvi4a2n3yvnnvnq73ost/512x384.jpg'},
+    {id:'88008',title:'GeometryRush',category:'Arcade',url:'https://html5.gamemonetize.co/p2p9llsb78ugrgqzp95x9a6gon3nvvfo/',thumb:'https://img.gamemonetize.com/p2p9llsb78ugrgqzp95x9a6gon3nvvfo/512x384.jpg'},
+    {id:'86036',title:'Geometry Vibes',category:'Arcade',url:'https://html5.gamemonetize.co/22oocjj2acsvkohnu20obnjp4rnqmiv5/',thumb:'https://img.gamemonetize.com/22oocjj2acsvkohnu20obnjp4rnqmiv5/512x384.jpg'},
+    {id:'86122',title:'Geometry Vibes X Arrow',category:'Arcade',url:'https://html5.gamemonetize.co/z1f0avym9sh561rg8yu3hlmzy2u2zuvx/',thumb:'https://img.gamemonetize.com/z1f0avym9sh561rg8yu3hlmzy2u2zuvx/512x384.jpg'},
+    {id:'86124',title:'Geometry Vibes X Ball',category:'Arcade',url:'https://html5.gamemonetize.co/734rvzp0kl14ytxspbpv4p6uytftdlfn/',thumb:'https://img.gamemonetize.com/734rvzp0kl14ytxspbpv4p6uytftdlfn/512x384.jpg'},
+    {id:'86706',title:'Mag Roller',category:'Arcade',url:'https://html5.gamemonetize.co/xsdhcwwkr1v7xhzx661raou0zmcdf9df/',thumb:'https://img.gamemonetize.com/xsdhcwwkr1v7xhzx661raou0zmcdf9df/512x384.jpg'},
+    {id:'85688',title:'MarbleMaze2',category:'Arcade',url:'https://html5.gamemonetize.co/04juwgelsxdddyb8698nur9wu6ewxt8l/',thumb:'https://img.gamemonetize.com/04juwgelsxdddyb8698nur9wu6ewxt8l/512x384.jpg'},
+    {id:'85432',title:'Dash Hero',category:'Arcade',url:'https://html5.gamemonetize.co/rrq98w912s5jferm6uxtvf13efrmv8d2/',thumb:'https://img.gamemonetize.com/rrq98w912s5jferm6uxtvf13efrmv8d2/512x384.jpg'},
+    {id:'85656',tags:'Mobile',title:'Square Fling',category:'Arcade',url:'https://html5.gamemonetize.co/lslo22hs4fnhiks9hhpf4l2djlgasqke/',thumb:'https://img.gamemonetize.com/lslo22hs4fnhiks9hhpf4l2djlgasqke/512x384.jpg'},
+    {id:'85627',title:'Going Up Rooftop',category:'Action',url:'https://html5.gamemonetize.co/zefxa3eihgcjlrko840mqbn2libfecp5/',thumb:'https://img.gamemonetize.com/zefxa3eihgcjlrko840mqbn2libfecp5/512x384.jpg'},
+    {id:'86078',title:'Ragdoll Rush 3D: Sky Race',category:'Action',url:'https://html5.gamemonetize.co/s81mxt5hul5zjjiv32c3we5tcgbd3m36/',thumb:'https://img.gamemonetize.com/s81mxt5hul5zjjiv32c3we5tcgbd3m36/512x384.jpg'},
+    {id:'85551',tags:'Mobile',title:'Crazy Bus Escape Runner',category:'Action',url:'https://html5.gamemonetize.co/tktierqxsemt0iifx5x9had63otarsz0/',thumb:'https://img.gamemonetize.com/tktierqxsemt0iifx5x9had63otarsz0/512x384.jpg'},
+    {id:'87937',title:'Nutty Rush',category:'Arcade',url:'https://html5.gamemonetize.co/zy741crr2w6wqwhqocgcp8cwgr7rau5y/',thumb:'https://img.gamemonetize.com/zy741crr2w6wqwhqocgcp8cwgr7rau5y/512x384.jpg'},
+    {id:'87616',title:'Grass Rush Adventure',category:'Adventure',url:'https://html5.gamemonetize.co/t1a6y3txgx1n9b1bhurm0dihg1ruwcrk/',thumb:'https://img.gamemonetize.com/t1a6y3txgx1n9b1bhurm0dihg1ruwcrk/512x384.jpg'},
+    {id:'85434',title:'Taxi Rush',category:'Racing',url:'https://html5.gamemonetize.co/5jzzwvgh5ljmtvgawdsjtio83tpqry6f/',thumb:'https://img.gamemonetize.com/5jzzwvgh5ljmtvgawdsjtio83tpqry6f/512x384.jpg'},
+    {id:'86893',title:'Bike Stunt Master Mini Rush',category:'Racing',url:'https://html5.gamemonetize.co/9m7b1g3apiu7nazxcn863ymcmga4ud3y/',thumb:'https://img.gamemonetize.com/9m7b1g3apiu7nazxcn863ymcmga4ud3y/512x384.jpg'},
+    {id:'85614',title:'Extreme Highway Traffic Racer',category:'Racing',url:'https://html5.gamemonetize.co/tukw1fv5a89azcc89hihld37aoqkbota/',thumb:'https://img.gamemonetize.com/tukw1fv5a89azcc89hihld37aoqkbota/512x384.jpg'},
+    {id:'85608',title:'Drifty Road Rush',category:'Racing',url:'https://html5.gamemonetize.co/6jqelogy7lrcqoqx6jt2e080c9kf6tpg/',thumb:'https://img.gamemonetize.com/6jqelogy7lrcqoqx6jt2e080c9kf6tpg/512x384.jpg'},
+    {id:'86069',title:'CAR SMASH OBBY 3D',category:'Racing',url:'https://html5.gamemonetize.co/akpoe15y02690iqssyoqm6dpotmcpuxl/',thumb:'https://img.gamemonetize.com/akpoe15y02690iqssyoqm6dpotmcpuxl/512x384.jpg'},
+    {id:'86073',title:'Car Obby 3D',category:'Racing',url:'https://html5.gamemonetize.co/0hbbm274a3v134mfpe2z7cgjy6ylxsji/',thumb:'https://img.gamemonetize.com/0hbbm274a3v134mfpe2z7cgjy6ylxsji/512x384.jpg'},
+    {id:'87932',title:'Bean Party Obby',category:'Arcade',url:'https://html5.gamemonetize.co/1ejuc6yo1lqr4o7ae3ussgi7d7uh21oe/',thumb:'https://img.gamemonetize.com/1ejuc6yo1lqr4o7ae3ussgi7d7uh21oe/512x384.jpg'},
+    {id:'85569',title:'Obby Tower: Only Up!',category:'Arcade',url:'https://html5.gamemonetize.co/bfc1hrckc0biabxdvh7tev75sepg78d8/',thumb:'https://img.gamemonetize.com/bfc1hrckc0biabxdvh7tev75sepg78d8/512x384.jpg'},
+    {id:'85681',title:'Obby: Lucky Block Heist',category:'Arcade',url:'https://html5.gamemonetize.co/ewnvpyog4cz5pd8fexlrkw1eqaxzzx49/',thumb:'https://img.gamemonetize.com/ewnvpyog4cz5pd8fexlrkw1eqaxzzx49/512x384.jpg'},
+    {id:'87652',title:'+1 Speed Superhero Obby',category:'Arcade',url:'https://html5.gamemonetize.co/xrlww31pl1jvsrk9xo2vsqzahqn4088n/',thumb:'https://img.gamemonetize.com/xrlww31pl1jvsrk9xo2vsqzahqn4088n/512x384.jpg'},
+    {id:'86384',tags:'Mobile',title:'Bike Obby Draw Pencil',category:'Arcade',url:'https://html5.gamemonetize.co/y6wq6n3z1bh9xf8lorl7uve5sz2d2uha/',thumb:'https://img.gamemonetize.com/y6wq6n3z1bh9xf8lorl7uve5sz2d2uha/512x384.jpg'},
+    {id:'86631',title:'Tower platformer 3D',category:'Adventure',url:'https://html5.gamemonetize.co/son6w4zjinxw7b1s8yd6y7c6tosoqzs5/',thumb:'https://img.gamemonetize.com/son6w4zjinxw7b1s8yd6y7c6tosoqzs5/512x384.jpg'},
+    {id:'85887',title:'Mononinja',category:'Adventure',url:'https://html5.gamemonetize.co/7qmnjc70vh04fy0hj0sdx6n9c2ug8fue/',thumb:'https://img.gamemonetize.com/7qmnjc70vh04fy0hj0sdx6n9c2ug8fue/512x384.jpg'},
+    {id:'85947',title:'URBAN JUMP',category:'Adventure',url:'https://html5.gamemonetize.co/vwxrl49jbzmysbvwccpze3tmkly09jj9/',thumb:'https://img.gamemonetize.com/vwxrl49jbzmysbvwccpze3tmkly09jj9/512x384.jpg'},
+    {id:'85902',title:'Chubby Duck Jump',category:'Arcade',url:'https://html5.gamemonetize.co/bqp870scog1zytubznmkveipim9jw8ok/',thumb:'https://img.gamemonetize.com/bqp870scog1zytubznmkveipim9jw8ok/512x384.jpg'},
+    {id:'85798',title:'HURDLES',category:'Sports',url:'https://html5.gamemonetize.co/c949dg0t8o3i8oykfuwinevumjysy9tr/',thumb:'https://img.gamemonetize.com/c949dg0t8o3i8oykfuwinevumjysy9tr/512x384.jpg'},
+    {id:'85686',title:'Jumpy Rabbits',category:'Arcade',url:'https://html5.gamemonetize.co/k7k78iql0afx62m9bqo8sjk9dv8b2t5c/',thumb:'https://img.gamemonetize.com/k7k78iql0afx62m9bqo8sjk9dv8b2t5c/512x384.jpg'},
+    {id:'87679',title:'Legiontide Army Runner',category:'Strategy',url:'https://html5.gamemonetize.co/sxsjr5xy86lzvr831z9ri6k063vh1so9/',thumb:'https://img.gamemonetize.com/sxsjr5xy86lzvr831z9ri6k063vh1so9/512x384.jpg'},
+    {id:'87261',tags:'Mobile',title:'Dog Runaway',category:'Action',url:'https://html5.gamemonetize.co/0d8wqm8egu0pvx8j0cotpaxsnvvbwszt/',thumb:'https://img.gamemonetize.com/0d8wqm8egu0pvx8j0cotpaxsnvvbwszt/512x384.jpg'},
+    {id:'85657',title:'Spike Sphere',category:'Casual',url:'https://html5.gamemonetize.co/0pesd8fujs4dmc6qkhvt134ouk4p46c2/',thumb:'https://img.gamemonetize.com/0pesd8fujs4dmc6qkhvt134ouk4p46c2/512x384.jpg'},
+    {id:'85428',title:'Octopus Run',category:'Casual',url:'https://html5.gamemonetize.co/5ddqj5p1kkf7uhxai25ll7xyci1qgdcd/',thumb:'https://img.gamemonetize.com/5ddqj5p1kkf7uhxai25ll7xyci1qgdcd/512x384.jpg'},
+    {id:'86744',title:'Flappy Halloween Game',category:'Casual',url:'https://html5.gamemonetize.co/g7c8wa9jccqy56jw9ahxb0aqjx6p2zwa/',thumb:'https://img.gamemonetize.com/g7c8wa9jccqy56jw9ahxb0aqjx6p2zwa/512x384.jpg'},
+    {id:'87321',title:'Last Garage: Zombie Road',category:'Action',url:'https://html5.gamemonetize.co/v8dz10q6cfukpco6k4xqp0xauhuyc7kc/',thumb:'https://img.gamemonetize.com/v8dz10q6cfukpco6k4xqp0xauhuyc7kc/512x384.jpg'},
+    {id:'87655',title:'WOBBLE IT',category:'Puzzle',url:'https://html5.gamemonetize.co/fr85ydryhol83ceqd3lp4e513tzen940/',thumb:'https://img.gamemonetize.com/fr85ydryhol83ceqd3lp4e513tzen940/512x384.jpg'},
+    {id:'85937',title:'Survivalist',category:'Shooting',url:'https://html5.gamemonetize.co/crvt23bbv3zouz2yvv9aktx282cpvn6p/',thumb:'https://img.gamemonetize.com/crvt23bbv3zouz2yvv9aktx282cpvn6p/512x384.jpg'},
+    {id:'87047',title:'Coinbound Voodoo Nightmare',category:'Arcade',url:'https://html5.gamemonetize.co/drk4juw5qvgt9nibxjdk1qv01xlfv742/',thumb:'https://img.gamemonetize.com/drk4juw5qvgt9nibxjdk1qv01xlfv742/512x384.jpg'},
+    {id:'88055',title:'Line Color 2D',category:'Puzzle',url:'https://html5.gamemonetize.co/erq3upnl7ngb12xt630z62xb1lbtogqb/',thumb:'https://img.gamemonetize.com/erq3upnl7ngb12xt630z62xb1lbtogqb/512x384.jpg'}
+  ];
+
+  /* ---------- device ---------- */
+  var TOUCH=(window.matchMedia&&matchMedia('(pointer:coarse)').matches)||('ontouchstart' in window&&innerWidth<1024);
+
+  /* ---------- player (immersive) ---------- */
+  var isOpen=false;
+  function openGame(url,title){
+    var fr=$('frame');
+    var old=fr.querySelector('iframe'); if(old) old.remove();
+    $('ldr').classList.remove('h');
+    var f=document.createElement('iframe');
+    f.src=url; f.title=title; f.allow='fullscreen; autoplay; gamepad; accelerometer; gyroscope'; f.allowFullscreen=true;
+    // sandbox without top-navigation / popups: a game can't redirect the page or open tabs
+    f.setAttribute('sandbox','allow-scripts allow-same-origin allow-pointer-lock allow-forms');
+    f.onload=function(){$('ldr').classList.add('h')};
+    fr.appendChild(f);
+    setTimeout(function(){$('ldr').classList.add('h')},7000);
+    $('player').classList.add('on'); document.body.classList.add('playing');
+    if(!isOpen){ try{history.pushState({game:1},'')}catch(e){} }
+    isOpen=true;
+    // true fullscreen + landscape where the browser allows it (Android/desktop); iOS keeps the overlay
+    var p=$('player'), rf=p.requestFullscreen||p.webkitRequestFullscreen;
+    if(rf){ try{ var r=rf.call(p); if(r&&r.then) r.then(function(){ if(TOUCH&&screen.orientation&&screen.orientation.lock){ screen.orientation.lock('landscape').catch(function(){}) } }).catch(function(){}) }catch(e){} }
+  }
+  function closeGame(fromPop){
+    if(!isOpen) return;
+    isOpen=false;
+    var f=$('frame').querySelector('iframe'); if(f) f.remove();
+    $('player').classList.remove('on'); document.body.classList.remove('playing');
+    try{ if(screen.orientation&&screen.orientation.unlock) screen.orientation.unlock() }catch(e){}
+    try{ if(document.fullscreenElement) document.exitFullscreen(); else if(document.webkitFullscreenElement) document.webkitExitFullscreen() }catch(e){}
+    if(fromPop!==true){ try{ if(history.state&&history.state.game) history.back() }catch(e){} }
+  }
+  $('cl').onclick=function(){closeGame()};
+  window.addEventListener('popstate',function(){closeGame(true)});
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeGame() });
+  // leaving browser fullscreen (Esc / swipe) also leaves the game
+  document.addEventListener('fullscreenchange',function(){ if(!document.fullscreenElement&&isOpen) closeGame() });
+
+  /* ---------- the two big picks (desktop and phone get games that suit them) ---------- */
+  var PICKS_DESKTOP=[
+    {cls:'pb',tag:'🔥 New & Addictive',title:'People Blaster',url:'https://html5.gamemonetize.com/ebnq54fc336mgcz8uifwrqdvl85w3yaw/',thumb:'https://img.gamemonetize.com/ebnq54fc336mgcz8uifwrqdvl85w3yaw/512x384.jpg'},
+    {cls:'slope',tag:'🔥 Most Played',title:'Slope',url:'https://html5.gamemonetize.com/2tscjd5hjy09sm7owo0saawmk6lbo3i3/',thumb:'https://img.gamemonetize.com/2tscjd5hjy09sm7owo0saawmk6lbo3i3/512x384.jpg'}
+  ];
+  var PICKS_TOUCH=[
+    {cls:'pb',tag:'🔥 New & Addictive',title:'People Blaster',url:'https://html5.gamemonetize.com/ebnq54fc336mgcz8uifwrqdvl85w3yaw/',thumb:'https://img.gamemonetize.com/ebnq54fc336mgcz8uifwrqdvl85w3yaw/512x384.jpg'},
+    {cls:'slope',tag:'🔥 Most Played',title:'Slope',url:'https://html5.gamemonetize.com/2tscjd5hjy09sm7owo0saawmk6lbo3i3/',thumb:'https://img.gamemonetize.com/2tscjd5hjy09sm7owo0saawmk6lbo3i3/512x384.jpg'}
+  ];
+  (TOUCH?PICKS_TOUCH:PICKS_DESKTOP).forEach(function(g){
+    var b=document.createElement('button'); b.className='pick '+g.cls;
+    var bg=document.createElement('div'); bg.className='bg';
+    var im=document.createElement('img'); im.alt=''; im.src=g.thumb; im.onerror=function(){im.remove()};
+    var wm=document.createElement('div'); wm.className='wm'; wm.textContent=g.title;
+    bg.appendChild(im); bg.appendChild(wm);
+    var info=document.createElement('div'); info.className='info';
+    info.innerHTML='<div class="nm"></div><span class="tg"></span><span class="play">▶ PLAY</span>';
+    info.querySelector('.nm').textContent=g.title; info.querySelector('.tg').textContent=g.tag;
+    b.appendChild(bg); b.appendChild(info);
+    b.onclick=function(){openGame(g.url,g.title)};
+    $('picks').appendChild(b);
+  });
+
+  /* ---------- feed ---------- */
+  function add(list){
+    list.forEach(function(g){
+      if(!g||!g.url||!g.title||seen[g.id]) return;
+      seen[g.id]=1; ALL.push(g);
+    });
+  }
+  function getJSON(u){var c=new AbortController();var t=setTimeout(function(){c.abort()},8000);return fetch(u,{signal:c.signal}).then(function(r){clearTimeout(t);if(!r.ok)throw 0;return r.json()})}
+  function loadPage(){
+    if(loading||done) return Promise.resolve();
+    loading=true; page++;
+    var direct=FEED+page;
+    var tries=[
+      function(){return getJSON('/api/games?page='+page)},
+      function(){return getJSON(direct)},
+      function(){return getJSON('https://corsproxy.io/?'+encodeURIComponent(direct))},
+      function(){return getJSON('https://api.allorigins.win/raw?url='+encodeURIComponent(direct))}
+    ];
+    return tries.reduce(function(p,fn){return p.catch(fn)},Promise.reject())
+      .then(function(d){ if(!Array.isArray(d)||!d.length){done=true;return} add(d); })
+      .catch(function(){ done=true; })
+      .then(function(){loading=false; render(true)});
+  }
+
+  /* ---------- browse ---------- */
+  function cats(){
+    var c={}; ALL.forEach(function(g){ if(TOUCH&&!/mobile/i.test(g.tags||'')) return; c[g.category]=(c[g.category]||0)+1});
+    var names=Object.keys(c).sort(function(a,b){return c[b]-c[a]}).slice(0,12);
+    var el=$('chips'); el.innerHTML='';
+    ['All'].concat(names).forEach(function(n){
+      var b=document.createElement('button'); b.className='chip'+(n===cat?' on':''); b.textContent=n;
+      b.onclick=function(){cat=n;shown=0;render(false)}; el.appendChild(b);
+    });
+  }
+  function filtered(){
+    var q=query.toLowerCase();
+    return ALL.filter(function(g){
+      if(TOUCH&&!/mobile/i.test(g.tags||'')) return false;
+      return (cat==='All'||g.category===cat)&&(!q||g.title.toLowerCase().indexOf(q)>-1||(g.tags||'').toLowerCase().indexOf(q)>-1);
+    });
+  }
+  function render(keep){
+    cats();
+    var list=filtered();
+    if(!keep||!shown) shown=Math.min(PER,list.length); else shown=Math.max(shown,Math.min(PER,list.length));
+    var grid=$('grid'); grid.innerHTML='';
+    list.slice(0,shown).forEach(function(g){
+      var b=document.createElement('button'); b.className='g';
+      var im=document.createElement('img'); im.loading='lazy'; im.alt=''; im.src=g.thumb;
+      var sp=document.createElement('span'); sp.textContent=g.title;
+      b.appendChild(im); b.appendChild(sp);
+      b.onclick=function(){openGame(g.url,g.title)};
+      grid.appendChild(b);
+    });
+    $('status').textContent=list.length?'':(loading?'Loading games…':'No games found. Try another search.');
+    $('more').style.display=(shown<list.length||!done)&&list.length?'block':'none';
+  }
+  function stripHtml(s){var d=document.createElement('div');d.innerHTML=s;return d.textContent||''}
+
+  $('more').onclick=function(){
+    var list=filtered();
+    if(shown+PER<=list.length){shown+=PER;render(true);return}
+    if(!done){loadPage().then(function(){shown+=PER;render(true)})} else {shown=list.length;render(true)}
+  };
+  var t; $('q').oninput=function(){clearTimeout(t);t=setTimeout(function(){query=$('q').value.trim();shown=0;render(false)},200)};
+
+  add(FALLBACK); render(false);
+  loadPage().then(function(){ if(!done) loadPage(); });   // then pull ~200 more from the feed
+})();
+</script>
+
+<!-- Supabase JS client. Configure the public project URL and anon key below. -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function(){
+  "use strict";
+  // Paste your Supabase Project URL and anon/public key here. Never put a service_role key in the browser.
+  const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
+  const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+  const PAGE_SIZE = 12;
+  const MAX_IMAGE_BYTES = 8 * 1024 * 1024;
+  const MAX_FILE_BYTES = 50 * 1024 * 1024;
+  const $ = id => document.getElementById(id);
+  const state = { client:null, user:null, profile:null, isAdmin:false, category:"all", query:"", sort:"newest", offset:0, hasMore:true, posts:[], authMode:"signup" };
+
+  function escapeText(value){ return String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+  function notify(el, message, error=false){ if(el){ el.textContent=message; el.style.color=error?"#ff9b9b":"#caa4ff"; } }
+  function openModal(id){ $(id).classList.add("open"); $(id).setAttribute("aria-hidden","false"); document.body.style.overflow="hidden"; }
+  function closeModal(modal){ modal.classList.remove("open"); modal.setAttribute("aria-hidden","true"); if(!document.querySelector(".gta-modal.open")) document.body.style.overflow=""; }
+  document.querySelectorAll("[data-close-modal]").forEach(el=>el.addEventListener("click",()=>closeModal(el.closest(".gta-modal"))));
+  document.addEventListener("keydown",e=>{ if(e.key==="Escape") document.querySelectorAll(".gta-modal.open").forEach(closeModal); });
+
+  function authOpen(){ if(!state.client){alert("Community sign-in is not configured yet. The site owner needs to add the Supabase project settings.");return;} setAuthMode("signup"); openModal("gta-auth-modal"); }
+  function setAuthMode(mode){
+    state.authMode=mode;
+    document.querySelectorAll("[data-auth-mode]").forEach(b=>b.classList.toggle("selected",b.dataset.authMode===mode));
+    $("gta-name-label").style.display=mode==="signup"?"block":"none";
+    $("gta-auth-name").style.display=mode==="signup"?"block":"none";
+    $("gta-auth-submit").textContent=mode==="signup"?"Create account":"Sign in";
+    $("gta-auth-password").autocomplete=mode==="signup"?"new-password":"current-password";
+    notify($("gta-auth-message"),"");
+  }
+  document.querySelectorAll("[data-auth-mode]").forEach(b=>b.addEventListener("click",()=>setAuthMode(b.dataset.authMode)));
+  $("gta-open-auth").addEventListener("click",authOpen);
+  $("gta-cta-auth").addEventListener("click",authOpen);
+
+  function renderAccount(){
+    const old=$("gta-open-auth");
+    if(state.user){
+      old.textContent=state.profile?.display_name || state.user.email || "Account";
+      old.classList.add("gta-account-chip");
+      if(state.isAdmin){
+        old.innerHTML='<span>ADMIN</span>';
+        old.classList.add("gta-admin-launch");
+        old.onclick=()=>openModal("gta-admin-modal");
+      }else{
+        old.onclick=()=>signOut();
+        old.title="Click to sign out";
+      }
+      $("gta-cta-auth").textContent="You're part of the community ✓";
+      $("gta-cta-auth").disabled=true;
+    }else{
+      old.textContent="SIGN IN ↗";
+      old.classList.remove("gta-account-chip","gta-admin-launch");
+      old.onclick=authOpen;
+      $("gta-cta-auth").textContent="Create your account →";
+      $("gta-cta-auth").disabled=false;
+    }
+  }
+  async function loadProfile(){
+    state.profile=null;state.isAdmin=false;
+    if(!state.user){renderAccount();return;}
+    const {data,error}=await state.client.from("profiles").select("display_name,role").eq("id",state.user.id).maybeSingle();
+    if(!error&&data){state.profile=data;state.isAdmin=data.role==="admin";}
+    renderAccount();
+  }
+  async function signOut(){await state.client.auth.signOut();}
+
+  $("gta-auth-form").addEventListener("submit",async e=>{
+    e.preventDefault(); if(!state.client)return;
+    const email=$("gta-auth-email").value.trim(), password=$("gta-auth-password").value;
+    const name=$("gta-auth-name").value.trim();
+    const btn=$("gta-auth-submit");btn.disabled=true;notify($("gta-auth-message"),"Please wait…");
+    try{
+      if(state.authMode==="signup"){
+        const {data,error}=await state.client.auth.signUp({email,password,options:{data:{display_name:name||email.split("@")[0]}}});
+        if(error)throw error;
+        if(data.session){notify($("gta-auth-message"),"Account created. You're signed in.");}
+        else{notify($("gta-auth-message"),"Check your email to confirm your account, then sign in.");}
+      }else{
+        const {error}=await state.client.auth.signInWithPassword({email,password});if(error)throw error;
+        closeModal($("gta-auth-modal"));
+      }
+    }catch(err){notify($("gta-auth-message"),err.message||"Unable to authenticate.",true);}
+    finally{btn.disabled=false;}
+  });
+  $("gta-google-auth").addEventListener("click",async()=>{
+    if(!state.client)return;
+    const {error}=await state.client.auth.signInWithOAuth({provider:"google",options:{redirectTo:location.origin+location.pathname}});
+    if(error)notify($("gta-auth-message"),error.message,true);
+  });
+
+  function formatDate(value){try{return new Intl.DateTimeFormat(undefined,{dateStyle:"medium"}).format(new Date(value));}catch{return "";}}
+  function categoryLabel(cat){return ({cheats:"CHEAT",guides:"GUIDE",files:"FILE",discoveries:"DISCOVERY",news:"NEWS"})[cat]||"POST";}
+  function safePublicUrl(path){if(!path)return null;return state.client.storage.from("gta6-assets").getPublicUrl(path).data.publicUrl;}
+  function cardElement(post){
+    const article=document.createElement("article");article.className="gta-post-card";
+    const cover=post.cover_path?safePublicUrl(post.cover_path):null;
+    if(cover){const img=document.createElement("img");img.className="gta-post-cover";img.loading="lazy";img.alt="";img.src=cover;article.appendChild(img);}
+    const body=document.createElement("div");body.className="gta-post-card-body";
+    const meta=document.createElement("div");meta.className="gta-post-meta";
+    const tag=document.createElement("span");tag.className="gta-tag";tag.textContent=categoryLabel(post.category);
+    const status=document.createElement("span");status.className="gta-verification "+(post.verification_status||"");status.textContent=(post.verification_status||"unconfirmed").toUpperCase();
+    meta.append(tag,status);
+    const title=document.createElement("h4");title.textContent=post.title;
+    const excerpt=document.createElement("p");excerpt.className="gta-post-excerpt";excerpt.textContent=post.excerpt||"Open this post to read the full details and join the discussion.";
+    const actions=document.createElement("div");actions.className="gta-post-actions";
+    const read=document.createElement("button");read.type="button";read.textContent="Read & discuss ↓";
+    const date=document.createElement("span");date.textContent=formatDate(post.created_at);
+    actions.append(read,date);body.append(meta,title,excerpt,actions);article.appendChild(body);
+    const detail=document.createElement("div");detail.className="gta-post-detail";detail.textContent=post.body||"";
+    if(post.attachment_path){
+      const attachment=document.createElement("div");attachment.className="gta-attachment";
+      const icon=document.createElement("span");icon.textContent="▣";
+      const link=document.createElement("a");link.href=safePublicUrl(post.attachment_path);link.target="_blank";link.rel="noopener";link.textContent=post.attachment_name||"Download attachment";
+      attachment.append(icon,link);detail.appendChild(attachment);
+    }
+    const comments=document.createElement("section");comments.className="gta-comments";
+    const commentTitle=document.createElement("h5");commentTitle.textContent="Community discussion";
+    const commentList=document.createElement("div");commentList.className="gta-comment-list";commentList.innerHTML='<span class="gta-signin-prompt">Loading comments…</span>';
+    comments.append(commentTitle,commentList);
+    if(state.user){
+      const form=document.createElement("form");form.className="gta-comment-form";
+      const input=document.createElement("input");input.maxLength=1000;input.required=true;input.placeholder="Add to the discussion…";
+      const send=document.createElement("button");send.type="submit";send.textContent="POST";
+      form.append(input,send);comments.appendChild(form);
+      form.addEventListener("submit",async e=>{
+        e.preventDefault();send.disabled=true;
+        const {error}=await state.client.from("comments").insert({post_id:post.id,user_id:state.user.id,body:input.value.trim()});
+        send.disabled=false;
+        if(error){alert(error.message);return;}
+        input.value="";await loadComments(post.id,commentList);
+      });
+    }else{
+      const prompt=document.createElement("p");prompt.className="gta-signin-prompt";prompt.textContent="You need a DegenArcade account to comment. ";
+      const sign=document.createElement("button");sign.type="button";sign.textContent="Sign in / create account";sign.onclick=authOpen;prompt.appendChild(sign);comments.appendChild(prompt);
+    }
+    read.addEventListener("click",async()=>{detail.classList.toggle("open");if(detail.classList.contains("open")){read.textContent="Hide details ↑";await loadComments(post.id,commentList);}else read.textContent="Read & discuss ↓";});
+    article.append(detail,comments);
+    loadComments(post.id,commentList);
+    return article;
+  }
+  async function loadComments(postId,container){
+    if(!state.client){container.textContent="Comments are temporarily unavailable.";return;}
+    const {data,error}=await state.client.from("comments").select("id,body,created_at,profiles(display_name)").eq("post_id",postId).order("created_at",{ascending:true}).limit(50);
+    container.innerHTML="";
+    if(error){const p=document.createElement("p");p.className="gta-signin-prompt";p.textContent="Comments could not be loaded.";container.appendChild(p);return;}
+    if(!data?.length){const p=document.createElement("p");p.className="gta-signin-prompt";p.textContent="No comments yet. Start the discussion.";container.appendChild(p);return;}
+    data.forEach(c=>{
+      const item=document.createElement("div");item.className="gta-comment";
+      const name=document.createElement("strong");name.textContent=c.profiles?.display_name||"Player";
+      const body=document.createElement("span");body.textContent=c.body;
+      const time=document.createElement("time");time.textContent=formatDate(c.created_at);
+      item.append(name,body,time);container.appendChild(item);
+    });
+  }
+  async function loadPosts(reset=true){
+    if(!state.client){$("gta-post-grid").innerHTML='<div class="gta-loading">The GTA 6 community feed will appear once the site owner connects the database.</div>'; $("gta-feed-status").textContent="Database setup required";return;}
+    if(reset){state.offset=0;state.hasMore=true;state.posts=[];$("gta-post-grid").innerHTML='<div class="gta-loading"><span class="gta-spinner"></span>Loading posts…</div>';}
+    let req=state.client.from("posts").select("id,title,slug,category,excerpt,body,verification_status,cover_path,attachment_path,attachment_name,created_at").eq("published",true);
+    if(state.category!=="all")req=req.eq("category",state.category);
+    if(state.query)req=req.or(`title.ilike.%${state.query.replace(/[,%()]/g," ").trim()}%,excerpt.ilike.%${state.query.replace(/[,%()]/g," ").trim()}%`);
+    req=req.order("created_at",{ascending:state.sort==="oldest"}).range(state.offset,state.offset+PAGE_SIZE-1);
+    const {data,error}=await req;
+    if(error){$("gta-post-grid").innerHTML='<div class="gta-loading">Unable to load posts. Please try again later.</div>';$("gta-feed-status").textContent="Feed connection error";return;}
+    const posts=data||[];state.posts=reset?posts:state.posts.concat(posts);state.offset+=posts.length;state.hasMore=posts.length===PAGE_SIZE;
+    $("gta-post-grid").innerHTML="";
+    state.posts.forEach(p=>$("gta-post-grid").appendChild(cardElement(p)));
+    $("gta-empty").hidden=state.posts.length>0;
+    $("gta-post-count").textContent=String(state.posts.length);
+    $("gta-feed-status").textContent=state.posts.length?`${state.posts.length} posts loaded`:"No posts published yet";
+    $("gta-load-more").hidden=!state.hasMore;
+  }
+  $("gta-load-more").addEventListener("click",()=>loadPosts(false));
+  $("gta-categories").addEventListener("click",e=>{
+    const btn=e.target.closest("[data-category]");if(!btn)return;
+    document.querySelectorAll(".gta-cat").forEach(b=>b.classList.toggle("active",b===btn));
+    state.category=btn.dataset.category;$("gta-feed-title").textContent=btn.textContent==="All posts"?"Latest drops":btn.textContent;
+    loadPosts(true);
+  });
+  $("gta-sort").addEventListener("change",e=>{state.sort=e.target.value;loadPosts(true);});
+  let searchTimer;
+  $("gta-search").addEventListener("input",()=>{clearTimeout(searchTimer);searchTimer=setTimeout(()=>{state.query=$("gta-search").value.trim();loadPosts(true);},280);});
+  $("gta-search-form").addEventListener("submit",e=>{e.preventDefault();state.query=$("gta-search").value.trim();loadPosts(true);});
+
+  async function uploadAsset(file,folder){
+    const ext=(file.name.split(".").pop()||"bin").toLowerCase().replace(/[^a-z0-9]/g,"");
+    const path=`${folder}/${crypto.randomUUID()}.${ext}`;
+    const {error}=await state.client.storage.from("gta6-assets").upload(path,file,{upsert:false,contentType:file.type||"application/octet-stream"});
+    if(error)throw error;return path;
+  }
+  $("gta-post-form").addEventListener("submit",async e=>{
+    e.preventDefault();if(!state.user||!state.isAdmin){notify($("gta-publish-message"),"Admin access required.",true);return;}
+    const btn=$("gta-publish-btn");btn.disabled=true;notify($("gta-publish-message"),"Uploading and publishing…");
+    try{
+      const image=$("gta-post-image").files[0],file=$("gta-post-file").files[0];
+      if(image&&image.size>MAX_IMAGE_BYTES)throw new Error("Cover image must be 8 MB or smaller.");
+      if(file&&file.size>MAX_FILE_BYTES)throw new Error("Attachment must be 50 MB or smaller.");
+      let cover_path=null,attachment_path=null;
+      if(image)cover_path=await uploadAsset(image,"covers");
+      if(file)attachment_path=await uploadAsset(file,"attachments");
+      const title=$("gta-post-title").value.trim();
+      const slug=title.toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")+"-"+Date.now().toString(36);
+      const payload={title,slug,category:$("gta-post-category").value,verification_status:$("gta-post-status").value,excerpt:$("gta-post-excerpt").value.trim(),body:$("gta-post-body").value.trim(),cover_path,attachment_path,attachment_name:file?.name||null,author_id:state.user.id,published:true};
+      const {error}=await state.client.from("posts").insert(payload);if(error)throw error;
+      $("gta-post-form").reset();notify($("gta-publish-message"),"Published. Your post is now live.");
+      await loadPosts(true);setTimeout(()=>closeModal($("gta-admin-modal")),900);
+    }catch(err){notify($("gta-publish-message"),err.message||"Could not publish this post.",true);}
+    finally{btn.disabled=false;}
+  });
+
+  // Top navigation: category tabs filter the community feed; Games reveals the preserved arcade.
+  document.querySelectorAll("[data-top-tab]").forEach(btn=>btn.addEventListener("click",()=>{
+    document.querySelectorAll("[data-top-tab],[data-top-filter]").forEach(b=>b.classList.toggle("active",b===btn));
+    const target=$(btn.dataset.topTab); if(target) target.scrollIntoView({behavior:"smooth",block:"start"});
+  }));
+  document.querySelectorAll("[data-top-filter]").forEach(btn=>btn.addEventListener("click",()=>{
+    document.querySelectorAll("[data-top-tab],[data-top-filter]").forEach(b=>b.classList.toggle("active",b===btn));
+    const cat=btn.dataset.topFilter;
+    const catButton=document.querySelector(`.gta-cat[data-category="${cat}"]`);
+    if(catButton)catButton.click();
+    $("community-feed").scrollIntoView({behavior:"smooth",block:"start"});
+  }));
+  document.querySelectorAll("[data-top-tab='community-feed']").forEach(btn=>btn.addEventListener("click",()=>{
+    const all=document.querySelector('.gta-cat[data-category="all"]');if(all)all.click();
+  }));
+  // Keep the selected top tab in sync when the user chooses a category inside the hub.
+  $("gta-categories").addEventListener("click",e=>{
+    const category=e.target.closest("[data-category]");if(!category)return;
+    const match=document.querySelector(`[data-top-filter="${category.dataset.category}"]`);
+    if(category.dataset.category==="all")document.querySelectorAll("[data-top-tab],[data-top-filter]").forEach(b=>b.classList.toggle("active",b.dataset.topTab==="community-feed"));
+    else if(match)document.querySelectorAll("[data-top-tab],[data-top-filter]").forEach(b=>b.classList.toggle("active",b===match));
+  });
+
+  async function init(){
+    if(!window.supabase?.createClient||SUPABASE_URL.startsWith("YOUR_")||SUPABASE_ANON_KEY.startsWith("YOUR_")){
+      $("gta-post-grid").innerHTML='<div class="gta-loading">GTA 6 Hub interface ready — connect Supabase to enable live posts, uploads, accounts and comments.</div>';
+      $("gta-feed-status").textContent="Waiting for Supabase configuration";
+      return;
+    }
+    state.client=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+    const {data}=await state.client.auth.getSession();state.user=data.session?.user||null;
+    await loadProfile();await loadPosts(true);
+    state.client.auth.onAuthStateChange(async(_event,session)=>{state.user=session?.user||null;await loadProfile();await loadPosts(true);});
+  }
+  init();
+})();
+</script>
+
+</body>
+</html>
