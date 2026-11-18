@@ -280,6 +280,19 @@ footer{border-color:#1f3442}footer p{color:#849cac}
 @media(max-width:760px){.site-nav{height:56px;padding:0 14px}.nav-status{display:none}.nav-account{margin-left:auto}.top-tab-wrap{top:0}.top-tabs{padding:7px 10px;gap:3px}.top-tab{padding:9px 11px;font-size:.59rem}.top-tab.games-tab{margin-left:0}.wrap{padding:0 12px}.hub-topline{padding:10px 13px;font-size:.48rem}.gta-hero{min-height:320px}.gta-hero-content{padding:26px 18px}.gta-hub-head{padding:19px 14px 12px}.gta-category-rail{padding:0 14px 13px}.gta-feed-toolbar{padding:12px 14px}.gta-post-grid{grid-template-columns:1fr;padding:13px 14px;gap:10px}.gta-community-cta{margin:7px 14px 15px}.games-intro{padding-top:20px}.picks{grid-template-columns:1fr 1fr;gap:9px}.pick{aspect-ratio:4/5}.games-heading{padding-top:20px}}
 @media(min-width:761px) and (max-width:980px){.gta-post-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
+
+/* Three simple, separate destinations: Hub, Community, Games. */
+.app-view{display:none;scroll-margin-top:78px}
+.app-view.active{display:block}
+#games.app-view.active{display:block}
+#community-view{margin:22px 0 34px;border:1px solid #294251;border-radius:15px;background:linear-gradient(155deg,#0d1925,#0b111c 60%,#10101b);box-shadow:0 24px 70px rgba(0,0,0,.3);overflow:hidden}
+.community-page-head{padding:34px 28px 26px;background:radial-gradient(ellipse at 85% 20%,rgba(255,79,154,.16),transparent 42%),linear-gradient(120deg,#0c1823,#121324 65%,#1c1424);border-bottom:1px solid #263c4b}
+.community-page-head h1{font-family:var(--fd);font-size:clamp(2rem,5vw,3.3rem);letter-spacing:-1px;margin:7px 0;color:#f3fbff}
+.community-page-head h1 em{font-style:normal;color:#ff69a9}
+.community-page-head p{max-width:620px;color:#aebfcb;font-size:.86rem;line-height:1.6}
+#community-view .gta-feed-toolbar{margin-top:0}
+@media(max-width:760px){.community-page-head{padding:25px 16px 20px}#community-view{margin:14px 0 24px}}
+
 </style>
 </head>
 <body>
@@ -291,11 +304,7 @@ footer{border-color:#1f3442}footer p{color:#849cac}
 <div class="top-tab-wrap" id="top">
   <div class="top-tabs" role="tablist" aria-label="DegenArcade sections">
     <button class="top-tab active" type="button" data-top-tab="gta-hub"><span>✦</span> GTA 6 HUB</button>
-    <button class="top-tab" type="button" data-top-tab="community-feed"><span>◉</span> COMMUNITY</button>
-    <button class="top-tab" type="button" data-top-filter="cheats"><span>⌁</span> CHEATS</button>
-    <button class="top-tab" type="button" data-top-filter="guides"><span>▤</span> GUIDES</button>
-    <button class="top-tab" type="button" data-top-filter="discoveries"><span>⌖</span> DISCOVERIES</button>
-    <button class="top-tab" type="button" data-top-filter="files"><span>⇩</span> FILES</button>
+    <button class="top-tab" type="button" data-top-tab="community-view"><span>◉</span> COMMUNITY</button>
     <button class="top-tab games-tab" type="button" data-top-tab="games"><span>🎮</span> GAMES</button>
   </div>
 </div>
@@ -304,14 +313,14 @@ footer{border-color:#1f3442}footer p{color:#849cac}
   <!-- THE TWO OPTIONS -->
 
   <!-- GTA 6 COMMUNITY HUB -->
-  <section id="gta-hub" class="gta-hub">
+  <section id="gta-hub" class="gta-hub app-view active">
     <div class="hub-topline"><span>DEGENARCADE PRESENTS</span><span>VICE CITY · LEONIDA · BEYOND</span></div>
     <div class="gta-hero">
       <div class="gta-hero-art" aria-hidden="true"></div>
       <div class="gta-hero-content">
         <div class="gta-kicker"><span class="live-dot"></span> DEGENARCADE COMMUNITY</div>
         <h1>GTA 6 <em>DATABASE</em></h1>
-        <p>Cheats, guides, discoveries, files and player discussions — all in one place.</p>
+        <p>Your GTA 6 reference point for cheats, guides, discoveries and useful community resources.</p>
         <form id="gta-search-form" class="gta-search">
           <span aria-hidden="true">⌕</span>
           <input id="gta-search" type="search" placeholder="Search cheats, guides, files and discoveries..." autocomplete="off">
@@ -326,19 +335,26 @@ footer{border-color:#1f3442}footer p{color:#849cac}
     </div>
 
     <div class="gta-hub-head">
-      <div><span class="eyebrow">THE LEONIDA ARCHIVE</span><h2>Explore the hub</h2></div>
+      <div><span class="eyebrow">THE LEONIDA ARCHIVE</span><h2>Explore GTA 6 resources</h2></div>
       <span class="hub-member-note">Sign in to comment · Join the archive</span>
     </div>
 
     <div class="gta-category-rail" id="gta-categories" aria-label="Filter GTA 6 content">
-      <button class="gta-cat active" data-category="all">All posts</button>
+      <button class="gta-cat active" data-category="all">All resources</button>
       <button class="gta-cat" data-category="cheats">Cheats</button>
       <button class="gta-cat" data-category="guides">Guides</button>
       <button class="gta-cat" data-category="files">Files</button>
       <button class="gta-cat" data-category="discoveries">Discoveries</button>
       <button class="gta-cat" data-category="news">News & updates</button>
     </div>
+  </section>
 
+  <section id="community-view" class="community-view app-view">
+    <div class="community-page-head">
+      <span class="eyebrow">DEGENARCADE PLAYERS</span>
+      <h1>COMMUNITY <em>FEED</em></h1>
+      <p>Discuss GTA 6, share what you find, and browse guides, cheats and community uploads.</p>
+    </div>
     <div class="gta-feed-toolbar" id="community-feed">
       <div><h3 id="gta-feed-title">Latest drops</h3><p>Fresh uploads and community resources</p></div>
       <select id="gta-sort" aria-label="Sort posts"><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select>
@@ -415,15 +431,14 @@ footer{border-color:#1f3442}footer p{color:#849cac}
     <button id="cl" aria-label="Back">✕</button>
   </div>
 
-  <!-- NATIVE BANNER (one per page: the container id must be unique) -->
-  <div class="adw">
-    <script async="async" data-cfasync="false" src="https://pl29753476.profitableratecpmnetwork.com/738c225236e24ffb39c9161fd85a435a/invoke.js"></script>
-    <div id="container-738c225236e24ffb39c9161fd85a435a"></div>
-  </div>
-
   <!-- EXISTING FREE GAMES LIBRARY -->
-  <section id="games" class="games-view">
-    <div class="games-intro"><span class="eyebrow">THE ORIGINAL ARCADE · STILL FREE</span><h2>DROP INTO THE GAMES</h2><p>Your existing DegenArcade library stays right here. Same GameMonetize feed, same instant-play experience.</p></div>
+  <section id="games" class="games-view app-view">
+    <!-- NATIVE BANNER (one per page: the container id must be unique) -->
+    <div class="adw">
+      <script async="async" data-cfasync="false" src="https://pl29753476.profitableratecpmnetwork.com/738c225236e24ffb39c9161fd85a435a/invoke.js"></script>
+      <div id="container-738c225236e24ffb39c9161fd85a435a"></div>
+    </div>
+    <div class="games-intro"><span class="eyebrow">THE ORIGINAL ARCADE · STILL FREE</span><h2>PLAY SOMETHING NEW</h2><p>Browse free games, find your next favourite, and jump straight into the action.</p></div>
     <div class="picks" id="picks" style="margin-top:14px"></div>
     <div class="games-heading"><span class="eyebrow">BROWSE THE ARCADE</span><h2>ALL GAMES</h2><p>Find a quick match, race, puzzle or arcade run.</p></div>
   <!-- BROWSE -->
@@ -809,7 +824,7 @@ footer{border-color:#1f3442}footer p{color:#849cac}
   $("gta-sort").addEventListener("change",e=>{state.sort=e.target.value;loadPosts(true);});
   let searchTimer;
   $("gta-search").addEventListener("input",()=>{clearTimeout(searchTimer);searchTimer=setTimeout(()=>{state.query=$("gta-search").value.trim();loadPosts(true);},280);});
-  $("gta-search-form").addEventListener("submit",e=>{e.preventDefault();state.query=$("gta-search").value.trim();loadPosts(true);});
+  $("gta-search-form").addEventListener("submit",e=>{e.preventDefault();state.query=$("gta-search").value.trim();showView("community-view");loadPosts(true);});
 
   async function uploadAsset(file,folder){
     const ext=(file.name.split(".").pop()||"bin").toLowerCase().replace(/[^a-z0-9]/g,"");
@@ -837,27 +852,31 @@ footer{border-color:#1f3442}footer p{color:#849cac}
     finally{btn.disabled=false;}
   });
 
-  // Top navigation: category tabs filter the community feed; Games reveals the preserved arcade.
+  // Primary navigation switches between three distinct interfaces.
+  function showView(id){
+    document.querySelectorAll(".app-view").forEach(view=>view.classList.toggle("active",view.id===id));
+    document.querySelectorAll("[data-top-tab]").forEach(btn=>btn.classList.toggle("active",btn.dataset.topTab===id));
+    const view=$(id); if(view) window.scrollTo({top:0,behavior:"smooth"});
+  }
   document.querySelectorAll("[data-top-tab]").forEach(btn=>btn.addEventListener("click",()=>{
-    document.querySelectorAll("[data-top-tab],[data-top-filter]").forEach(b=>b.classList.toggle("active",b===btn));
-    const target=$(btn.dataset.topTab); if(target) target.scrollIntoView({behavior:"smooth",block:"start"});
+    const id=btn.dataset.topTab;
+    if(id==="community-view"){
+      state.category="all";
+      document.querySelectorAll("#gta-categories .gta-cat").forEach(b=>b.classList.toggle("active",b.dataset.category==="all"));
+      $("gta-feed-title").textContent="Latest drops";
+      loadPosts(true);
+    }
+    showView(id);
   }));
-  document.querySelectorAll("[data-top-filter]").forEach(btn=>btn.addEventListener("click",()=>{
-    document.querySelectorAll("[data-top-tab],[data-top-filter]").forEach(b=>b.classList.toggle("active",b===btn));
-    const cat=btn.dataset.topFilter;
-    const catButton=document.querySelector(`.gta-cat[data-category="${cat}"]`);
-    if(catButton)catButton.click();
-    $("community-feed").scrollIntoView({behavior:"smooth",block:"start"});
-  }));
-  document.querySelectorAll("[data-top-tab='community-feed']").forEach(btn=>btn.addEventListener("click",()=>{
-    const all=document.querySelector('.gta-cat[data-category="all"]');if(all)all.click();
+  // GTA Hub category shortcuts open the Community screen with that category selected.
+  document.querySelectorAll("#gta-categories [data-category]").forEach(btn=>btn.addEventListener("click",()=>{
+    showView("community-view");
   }));
   // Keep the selected top tab in sync when the user chooses a category inside the hub.
   $("gta-categories").addEventListener("click",e=>{
     const category=e.target.closest("[data-category]");if(!category)return;
-    const match=document.querySelector(`[data-top-filter="${category.dataset.category}"]`);
-    if(category.dataset.category==="all")document.querySelectorAll("[data-top-tab],[data-top-filter]").forEach(b=>b.classList.toggle("active",b.dataset.topTab==="community-feed"));
-    else if(match)document.querySelectorAll("[data-top-tab],[data-top-filter]").forEach(b=>b.classList.toggle("active",b===match));
+    // Category selection stays within the Community interface; primary nav remains on Community.
+    document.querySelectorAll("[data-top-tab]").forEach(b=>b.classList.toggle("active",b.dataset.topTab==="community-view"));
   });
 
   async function init(){
